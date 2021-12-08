@@ -12,7 +12,7 @@ const Header = () => {
           </LinkItem>
           <LinkItem>
             <StyledLink to="/about">About</StyledLink>
-            <SignInButton />
+            <SignInButton to="/signin" />
           </LinkItem>
         </LinksContainer>
       </Wrapper>

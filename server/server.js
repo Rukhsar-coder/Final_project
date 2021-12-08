@@ -5,7 +5,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
-const { handleExercise } = require("./handlers/handlers");
+const {
+  handleExercise,
+  getExerciseCategory,
+  getEquipmentList,
+} = require("./handlers/handlers");
 
 const PORT = 8000;
 
@@ -13,12 +17,25 @@ var app = express();
 
 app.use(express.json());
 
+//---------------------End Point--------------------------
 app.get("/hello", (req, res) => {
-  res.status(200).json({ hi: "hi" });
+  res.status(200).json({ hi: "hi............." });
 });
-app.get("/Exercise", (req, res) => {
+//----------all the list of Exercise Information-----------
+app.get("/exercise", (req, res) => {
   const { type } = req.params;
-  handleExercise(type)
+  getExerciseCategory(type)
+    .then((name) => {
+      return res.status(200).json({ status: "200", name });
+    })
+    .catch((err) => {
+      res.status(400).json({ status: "400", message: err.message });
+    });
+});
+//---------------list of bodyparts----------------
+app.get("/category", (req, res) => {
+  const { type } = req.params;
+  getEquipmentList(type)
     .then((name) => {
       return res.status(200).json({ status: "200", name });
     })

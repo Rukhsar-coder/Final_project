@@ -17,25 +17,25 @@ const options = {
 const getExerciseInfo = async () => {
   try {
     let exercises;
-    // await request(options, function (error, response, body) {
-    //   console.log(body);
-    // });
     await fetch("https://wger.de/api/v2/exerciseinfo/", options)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.results[0]);
-        exercises = data.results.filter((item) => {
-          return item.name.includes("Kettlebell");
-        });
+        // // console.log(data.results[0].name);
+        exercises = data.results;
+        // exercises = data.results.filter((item) => {
+        //   return item.name.includes("Kettlebell");
+
+        // });
       });
-    console.log(exercises, "exercises");
-    console.log("================");
+    // console.log(exercises, "exercises");
+    // console.log("================");
+    return exercises;
     // return parsedResponse.name;
   } catch (err) {
     console.log(err);
   }
 };
 
-getExerciseInfo().then((data) => console.log(data));
+// getExerciseInfo().then((data) => console.log(data));
 
-module.export = { getExerciseInfo };
+module.exports = { getExerciseInfo };
