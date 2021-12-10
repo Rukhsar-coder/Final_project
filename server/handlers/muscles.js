@@ -11,24 +11,21 @@ const options = {
   method: "GET",
 };
 
-const getEquipmentList = async () => {
+const getmuscle = async () => {
   try {
-    let equipment;
-    await fetch("https://wger.de/api/v2/equipment/", options)
+    let muscle;
+    await fetch("https://wger.de/api/v2/muscle/", options)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
-        console.log("-------------");
+        muscle = data.results;
       });
 
-    console.log(equipment, "equipment");
-    console.log("================");
-    // return parsedResponse.name;
+    return muscle;
   } catch (err) {
     console.log(err);
   }
 };
 
-getEquipmentList().then((data) => console.log(data));
+// getmuscle().then((data) => console.log(data));
 
-module.export = { getEquipmentList };
+module.exports = { getmuscle };
