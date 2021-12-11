@@ -8,27 +8,27 @@ const options = {
   useUnifiedTopology: true,
 };
 
-//>>>>>>>>>>>----- getExerciseInfo ------>>>>>>>>>>>>>>>>>>>>>
-const getExerciseInfo = async (req, res) => {
+//>>>>>>>>>>>----- GetAllMuscles ------>>>>>>>>>>>>>>>>>>>>>
+const getAllMuscles = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
-  const db = client.db("DoctorAcess");
+  const db = client.db("Doctor");
 
   try {
     await client.connect();
     // console.log("connected!");
-    const dbExercise = await db.collection("Exercise").find().toArray();
 
-    if (dbExercise) {
-      // return console.log({ status: 201 });
+    const dbmuscle = await db.collection("Muscles").find().toArray();
+
+    if (dbmuscle) {
       return res.status(200).json({
         status: 200,
-        data: dbExercise,
-        message: "Successfully retrieved ExerciseInfo",
+        data: dbmuscle,
+        message: "Successfully retrieved Muscles",
       });
     } else {
       res
         .status(400)
-        .json({ status: 400, message: "Unable to retrieve ExerciseInfo" });
+        .json({ status: 400, message: "Unable to retrieve Muscles" });
     }
     client.close();
     console.log("Disconnected!");
@@ -38,4 +38,4 @@ const getExerciseInfo = async (req, res) => {
   }
 };
 
-module.exports = { getExerciseInfo };
+module.exports = { getAllMuscles };

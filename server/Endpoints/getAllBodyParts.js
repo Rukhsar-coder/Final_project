@@ -11,15 +11,24 @@ const options = {
 //>>>>>>>>>>>----- GetAllBodyParts ------>>>>>>>>>>>>>>>>>>>>>
 const GetAllBodyParts = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
-  const db = client.db("Doctor");
+  const db = client.db("DoctorAcess");
 
   try {
     await client.connect();
-    console.log("connected!");
-    const dbBodyParts = await db.collection("Category").find().toArray();
+    // console.log("connected!");
+    //declaring a variable to hold req.param.companyId.
+    // const bodyPart = req.params.bodyPart;
+    //Transform _id string to number so we can use it to search for exercise _id
+    // const bodyPart = req.params.bodyPart;
+    // console.log(bodyPart);
 
+    const dbBodyParts = await db
+      .collection("Exercise")
+      .find({ bodyPart: bodyPart })
+      .toArray();
+
+    console.log(dbBodyParts);
     if (dbBodyParts) {
-      // return console.log({ status: 201 });
       return res.status(200).json({
         status: 200,
         data: dbBodyParts,
@@ -37,5 +46,6 @@ const GetAllBodyParts = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
+GetAllBodyParts();
 
 module.exports = { GetAllBodyParts };

@@ -3,34 +3,29 @@ const request = require("request");
 const fetch = require("node-fetch");
 
 const options = {
-  // uri: "https://wger.de/api/v2/exerciseinfo/",
-  headers: {
-    Accept: "application/json",
-    Authentication: "Token 51d18ac5826488317361c3ad3f387dbdd1742761",
-    "Content-Type": "application/json",
-    // Vary: "Accept",
-  },
-  json: true, //auto parse
   method: "GET",
+  url: "https://exercisedb.p.rapidapi.com/exercises",
+  headers: {
+    "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+    "x-rapidapi-key": "d530c181aemshdc02fcc0067e117p1dc3fajsn698c441aa31a",
+    useQueryString: true,
+  },
 };
 
 const getExerciseInfo = async () => {
   try {
-    let exercises;
-    await fetch("https://wger.de/api/v2/exerciseinfo/", options)
-      .then((res) => res.json())
-      .then((data) => {
-        // // console.log(data.results[0].name);
-        exercises = data.results;
-        // exercises = data.results.filter((item) => {
-        //   return item.name.includes("Kettlebell");
-
-        // });
-      });
-    // console.log(exercises, "exercises");
-    // console.log("================");
-    return exercises;
-    // return parsedResponse.name;
+    let parsedResponse;
+    const response = await request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      // console.log(body);
+      //When receiving data from a web server, the data is always a string.
+      // Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+      parsedResponse = JSON.parse(body);
+      // console.log(Object.keys(response));
+      // console.log(parsedResponse);
+    });
+    return parsedResponse;
+    // return response;
   } catch (err) {
     console.log(err);
   }

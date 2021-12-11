@@ -10,6 +10,9 @@ import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import AboutUs from "./components/AboutUs";
 import SignIn from "./components/SignIn";
+import SingleExercises from "./components/SingleExercises";
+import ErrorPage from "./components/ErrorPage";
+
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
   return (
@@ -21,11 +24,17 @@ const App = () => {
             <Route exact path="/">
               <Homepage />
             </Route>
+            <Route exact path="/exerciseinfo/:id">
+              <SingleExercises />
+            </Route>
             <Route path="/about">
               <AboutUs />
             </Route>
             <Route path="/signin">
               <SignIn />
+            </Route>
+            <Route path="/errorpage">
+              <ErrorPage />
             </Route>
           </Switch>
         </Main>

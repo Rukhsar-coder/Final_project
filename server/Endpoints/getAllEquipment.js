@@ -15,13 +15,11 @@ const GetAllEquipment = async (req, res) => {
 
   try {
     await client.connect();
-    console.log("connected!");
+    // console.log("connected!");
 
-    const equipment = req.params.equipment;
-    const dbequipment = await db.collection("Exercise").findOne({ equipment });
+    const dbequipment = await db.collection("Equipment").find().toArray();
 
     if (dbequipment) {
-      // return console.log({ status: 201 });
       return res.status(200).json({
         status: 200,
         data: dbequipment,
