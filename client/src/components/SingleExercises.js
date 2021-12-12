@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const SingleExercises = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const { id } = useParams();
   // console.log(id);
   //set Variable
@@ -20,7 +20,7 @@ const SingleExercises = () => {
         setSelectedExercise(json.data);
       })
       .catch((err) => console.log(err));
-  }, [history]);
+  }, [id]);
 
   return (
     <Div>

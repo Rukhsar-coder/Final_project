@@ -8,36 +8,34 @@ const options = {
   useUnifiedTopology: true,
 };
 
-//>>>>>>>>>>>----- GetAllBodyParts ------>>>>>>>>>>>>>>>>>>>>>
-const GetAllBodyParts = async (req, res) => {
+//>>>>>>>>>>>----- getExerciseById ------>>>>>>>>>>>>>>>>>>>>>
+const getAllBodyParts = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
 
+  //Transform _id string to number so we can use it to search for exercise _id
+  const bodyPart = req.params.bodyPart;
+  console.log(bodyPart);
+
   try {
     await client.connect();
-    // console.log("connected!");
-    //declaring a variable to hold req.param.companyId.
-    // const bodyPart = req.params.bodyPart;
-    //Transform _id string to number so we can use it to search for exercise _id
-    // const bodyPart = req.params.bodyPart;
-    // console.log(bodyPart);
+    console.log("You are connected!");
 
-    const dbBodyParts = await db
+    const exerciseBybodyPart = await db
       .collection("Exercise")
-      .find({ bodyPart: bodyPart })
-      .toArray();
+      .findOne({ bodyPart: bodyPart });
 
-    console.log(dbBodyParts);
-    if (dbBodyParts) {
+    console.log(bodyPart);
+    if (exerciseBybodyPart) {
       return res.status(200).json({
         status: 200,
-        data: dbBodyParts,
-        message: "Successfully retrieved BodyParts",
+        data: exerciseBybodyPart,
+        message: "Successfully retrieved Body Parts",
       });
     } else {
       res
         .status(400)
-        .json({ status: 400, message: "Unable to retrieve BodyParts" });
+        .json({ status: 400, message: "Unable to retrieve Body Parts" });
     }
     client.close();
     console.log("Disconnected!");
@@ -46,6 +44,6 @@ const GetAllBodyParts = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-GetAllBodyParts();
+getAllBodyParts();
 
-module.exports = { GetAllBodyParts };
+module.exports = { getAllBodyParts };

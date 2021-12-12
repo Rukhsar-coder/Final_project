@@ -4,9 +4,9 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [exercise, setExercise] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [bodyPartInfo, setBodyPartInfo] = useState([]);
   const [equipmentNames, setEquipmentNames] = useState([]);
-  const [musclesInfo, setMusclesInfo] = useState([]);
+  const [targetMuscles, setTargetMuscles] = useState([]);
 
   const [selectedWorkout, setSelectedWorkout] = useState([]);
 
@@ -46,9 +46,9 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         exercise,
-        categories,
+        bodyPartInfo,
         equipmentNames,
-        musclesInfo,
+        targetMuscles,
         selectedWorkout,
         setSelectedWorkout,
       }}

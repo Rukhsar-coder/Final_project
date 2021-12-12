@@ -13,6 +13,7 @@ import SignIn from "./components/SignIn";
 import SingleExercises from "./components/SingleExercises";
 import ErrorPage from "./components/ErrorPage";
 import Appointment from "./components/Appintment";
+import AllExercises from "./components/PageComponents/AllExercises";
 
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
@@ -25,12 +26,26 @@ const App = () => {
             <Route exact path="/">
               <Homepage />
             </Route>
-            <Route exact path="/exerciseinfo/:id">
-              <SingleExercises />
-            </Route>
+            {/* <Route path="/category/:type">
+            <Category />
+          </Route>
+          <Route path="/search/:type">
+            <Search />
+          </Route>
+        */}
             <Route path="/about">
               <AboutUs />
             </Route>
+            <Route exact path="/exerciseinfo/:id">
+              <SingleExercises />
+            </Route>
+            <Route exact path="/exerciseinfo">
+              <AllExercises />
+            </Route>
+            {/* <Route exact path="/patient-cart">
+            <ShoppingCart/>
+          </Route> */}
+
             <Route path="/signin">
               <SignIn />
             </Route>
@@ -41,6 +56,12 @@ const App = () => {
             <Route path="/errorpage">
               <ErrorPage />
             </Route>
+            {/* <Route path="/searcherror">
+            <SearchError />
+          </Route> */}
+            {/* <Route path="/confirmation/:id">
+            <ConfirmationPage />
+          </Route> */}
           </Switch>
         </Main>
       </BrowserRouter>

@@ -9,15 +9,15 @@ const Exercise = ({ exercise }) => {
       <ExerciseDetails to={`/exerciseinfo/${exercise._id}`}>
         Exercise Detail
       </ExerciseDetails>
-      <ExerciseDescription {...exercise.description} />
       <ExerciseName>{exercise.name}</ExerciseName>
+      <ExerciseEquipment {...exercise.equipment} />
     </ExerciseWrapper>
   );
 };
 
 const ExerciseWrapper = styled.div``;
 const ExerciseDetails = styled(Link)``;
-const ExerciseDescription = styled.div``;
+const ExerciseEquipment = styled.div``;
 const ExerciseName = styled.div``;
 
 export default Exercise;
