@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import About from "./Images/About.jpeg";
+//importing footer and header components
+import Footer from "./Footer";
+import Header from "./Header";
 
 const AboutUS = () => {
   return (
     <Div>
+      <Header />
       <Wrapper>
         <Parag1>IT'S TIME TO REHAB SMARTER</Parag1>
         <Para2>
@@ -62,6 +66,7 @@ const AboutUS = () => {
           possible can!""
         </Para9>
       </Wrapper>
+      <Footer />
     </Div>
   );
 };

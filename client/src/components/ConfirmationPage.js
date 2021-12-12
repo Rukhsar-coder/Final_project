@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { FaCheckCircle } from "react-icons/fa";
 
 //importing header and footer components
-// import Footer from "./Footer";
-// import Header from "./Header";
+import Footer from "./Footer";
+import Header from "./Header";
 
 //date formatter
 import { format } from "date-fns";
@@ -26,6 +26,7 @@ const ConfirmationPage = () => {
     <>
       {/* <Header /> */}
       <Wrapper>
+        <Header />
         <FaCheckCircle size={40} />
         <AssessmentReceived>
           Doctor has created you Assessment Exercise List.
@@ -54,7 +55,7 @@ const ConfirmationPage = () => {
           </ExerciseSummary>
         </ConfirmationContainer>
       </Wrapper>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const SingleExercises = () => {
+const ExerciseDeatilPage = () => {
   // const history = useHistory();
   const { id } = useParams();
   // console.log(id);
@@ -26,7 +26,7 @@ const SingleExercises = () => {
     <Div>
       {selectedExercise && (
         <Wrapper>
-          Under Construction
+          Exercise Detail:
           <ExerciseName> {selectedExercise.name}</ExerciseName>
           <ExerciseEquipment>{selectedExercise.equipment}</ExerciseEquipment>
           <ExerciseBodyPart>{selectedExercise.bodyPart}</ExerciseBodyPart>
@@ -51,4 +51,4 @@ const Target = styled.div``;
 const ExerciseEquipment = styled.div``;
 const GifUrl = styled.div``;
 
-export default SingleExercises;
+export default ExerciseDeatilPage;

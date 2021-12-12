@@ -190,7 +190,7 @@ export const ExerciseProvider = ({ children }) => {
     });
   };
 
-  const removePatient = (data) => {
+  const removeExercise = (data) => {
     let updateArray = [];
 
     if (state.cart.length === 1) {
@@ -255,7 +255,7 @@ export const ExerciseProvider = ({ children }) => {
         setPaginationIndex,
         clearPatient,
         addPatient,
-        removePatient,
+        removeExercise,
         setLoadingState,
         unsetLoadingState,
         receiveCategoryExerciseInfoFromServer,
