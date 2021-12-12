@@ -12,6 +12,7 @@ import AboutUs from "./components/AboutUs";
 import SignIn from "./components/SignIn";
 import SingleExercises from "./components/SingleExercises";
 import ErrorPage from "./components/ErrorPage";
+import Appointment from "./components/Appintment";
 
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
@@ -32,6 +33,10 @@ const App = () => {
             </Route>
             <Route path="/signin">
               <SignIn />
+            </Route>
+
+            <Route exact path="/Appointment">
+              <Appointment />
             </Route>
             <Route path="/errorpage">
               <ErrorPage />

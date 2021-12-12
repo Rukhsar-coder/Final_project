@@ -6,7 +6,6 @@ const HomePage = () => {
   return (
     <Div>
       <Wrapper>
-        Under Construction
         <Para1>PHYSIO REHAB</Para1>
         <Para2>
           <b>THE PLACE</b> to get the most effective Physio exercises,

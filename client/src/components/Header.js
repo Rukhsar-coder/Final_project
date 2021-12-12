@@ -22,6 +22,7 @@ const Header = () => {
               <StyledLink to="/">WOROUTS</StyledLink>
 
               <StyledLink to="/">TELEHEALTH</StyledLink>
+              <StyledLink to="/Appointment">BOOK AN APPOINTMENT</StyledLink>
               <SignInButton to="/signin">
                 LOGIN <PersonIcon />
               </SignInButton>
@@ -42,7 +43,7 @@ const Wrapper = styled.header`
   width: 100%;
   display: flex;
   // background: #f5f5f5;
-  background: #00ffff;
+  // background: #00ffff;
   z-index: 9;
   // background-image: url("background.png");
 `;
@@ -58,7 +59,7 @@ const BrandName = styled.img`
     box-shadow: 0 0 10px #f4f4f4;
     transition: 300ms ease-in;
     transform: scale(1.05);
-    background: #00ffff;
+    // background: #00ffff;
   }
 `;
 const SignInButton = styled(NavLink)`
@@ -73,7 +74,7 @@ const SignInButton = styled(NavLink)`
   color: black;
   border: none;
   // background: #f5f5f5;
-  background: #7fffd4;
+  // background: #7fffd4;
 
   &:hover {
     cursor: pointer;
@@ -89,7 +90,7 @@ const LinksContainer = styled.span`
   // justify-content: center;
   list-style: none;
   border-top: 1px solid #d1d1d1;
-  background: #f5f5dc;
+  // background: #f5f5dc;
 `;
 
 const NavContainer = styled.div`
@@ -99,7 +100,7 @@ const NavContainer = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background: #ffe4c4;
+  // background: #ffe4c4;
 `;
 const LinkItem = styled.div`
   background: #ffb6c1;
@@ -124,6 +125,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 17px;
 
-  background: #ffa07a;
+  // background: #ffa07a;
 `;
 export default Header;
