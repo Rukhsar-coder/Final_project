@@ -19,7 +19,7 @@ const HomePage = () => {
         <Para6>Exercise + Explained Detailed note from physiotherapist</Para6>
         <Para7>SIGN-UP FOR MORE DETAIS</Para7>
         <ButtonSignup>Sign up</ButtonSignup>
-        <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg>
+        {/* <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg> */}
       </Wrapper>
     </Div>
   );
@@ -28,19 +28,26 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 25px;
+  width: auto;
+  height: 100vh;
+  background: #111111;
 `;
 
 const BackgroundImg = styled.img`
+top:50px
   height: 100vh;
-  width: 210vh;
+  width: 410vh;
   display: flex;
   margin-top: 0px;
 `;
 const Wrapper = styled.div`
   padding-top: 60px;
   justify-content: center;
-
+  text-align: center;
   font-family: "roboto", sans-serif;
+
+  line-height: 30px;
 `;
 
 const Para1 = styled.span`
@@ -57,6 +64,8 @@ const Para2 = styled.span`
   padding: 80px;
   font-size: 20px;
   color: white;
+
+  line-height: 30px;
 `;
 const Para3 = styled.span`
   top: 210px;
@@ -65,6 +74,8 @@ const Para3 = styled.span`
   padding: 80px;
   font-size: 20px;
   color: white;
+
+  line-height: 30px;
 `;
 const Para4 = styled.span`
   top: 230px;
@@ -98,8 +109,17 @@ const Para7 = styled.span`
 const ButtonSignup = styled.button`
   top: 450px;
   position: absolute;
-  padding: 30px;
-  font-size: 25px;
+  padding: 15px 85px;
+  font-size: 20px;
+  border-radius: 35px;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px #f4f4f4;
+    transition: 300ms ease-in;
+    transform: scale(1.05);
+    // background: #00ffff;
+  }
 `;
-const Para9 = styled.span``;
+// const Para9 = styled.span``;
 export default HomePage;

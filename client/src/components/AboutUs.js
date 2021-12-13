@@ -8,7 +8,6 @@ import Header from "./Header";
 const AboutUS = () => {
   return (
     <Div>
-      <Header />
       <Wrapper>
         <Parag1>IT'S TIME TO REHAB SMARTER</Parag1>
         <Para2>

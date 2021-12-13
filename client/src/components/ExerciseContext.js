@@ -79,17 +79,19 @@ function reducer(state, action) {
 export const ExerciseProvider = ({ children }) => {
   //for the limited content show on page
   const [paginationIndex, setPaginationIndex] = useState(0);
+  //to save the log in paitent information in sessionStorage
+  const [user, setUser] = useState();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [patientInfo, setPatientInfo] = useState(patientInitialState);
 
   //the exercise fetch dispatch function set up for pagination.
   //The existing array is duplicated with spread and the concatenated with the new incoming data.
-  const receiveExerciseInfoFromServer = (data) => {
-    dispatch({
-      type: "receive-exercise-info-from-server",
-      exercise: [...state.exercise].concat(data),
-    });
-  };
+  // const receiveExerciseInfoFromServer = (data) => {
+  //   dispatch({
+  //     type: "receive-exercise-info-from-server",
+  //     exercise: [...state.exercise].concat(data),
+  //   });
+  // };
 
   const receiveCategoryExerciseInfoFromServer = (data) => {
     //yet to creat the endpoint
@@ -240,7 +242,7 @@ export const ExerciseProvider = ({ children }) => {
         if (data.status !== 200) {
           console.log(data);
         } else {
-          receiveExerciseInfoFromServer(data.data);
+          // receiveExerciseInfoFromServer(data.data);
           unsetLoadingState();
         }
       });
@@ -250,7 +252,7 @@ export const ExerciseProvider = ({ children }) => {
     <ExerciseContext.Provider
       value={{
         state,
-        receiveExerciseInfoFromServer,
+        // receiveExerciseInfoFromServer,
         paginationIndex,
         setPaginationIndex,
         clearPatient,
@@ -264,6 +266,8 @@ export const ExerciseProvider = ({ children }) => {
         addQuantity,
         patientInfo,
         setPatientInfo,
+        user,
+        setUser,
       }}
     >
       {children}

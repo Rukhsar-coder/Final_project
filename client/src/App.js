@@ -1,25 +1,25 @@
 import React from "react";
-// import { BrowserRouter, Route } from "react-router-dom";
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
-// import { Switch } from "react-router";
 import styled from "styled-components";
-
+// import { useContext } from "react";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import AboutUs from "./components/AboutUs";
-import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 import ExerciseDeatilPage from "./components/ExerciseDeatilPage";
 import ErrorPage from "./components/ErrorPage";
 import Appointment from "./components/Appintment";
-import AllExercises from "./components/PageComponents/AllExercises";
 import CheckOutForm from "./components/PatientCart/CheckoutForm";
 
+// import { ExerciseContext } from "./ExerciseContext";
 import Globalstyles from "./components/Globalstyles";
 
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
+  //consume context
+  // const { user } = useContext(ExerciseContext);
+  // let signedinUser = window.sessionStorage.getItem("name");
+
   return (
     <>
       <BrowserRouter>
@@ -30,7 +30,7 @@ const App = () => {
             <Route exact path="/">
               <Homepage />
             </Route>
-            {/* <Route path="/category/:type">
+            {/* <Route path="/category/:type"> //TODO: 
             <Category />
           </Route>
           <Route path="/search/:type">
@@ -41,7 +41,7 @@ const App = () => {
               <AboutUs />
             </Route>
             <Route exact path="/exerciseinfo">
-              <AllExercises />
+              {/* <AllExercises /> */}
             </Route>
             <Route exact path="/exerciseinfo/:id">
               <ExerciseDeatilPage />
@@ -50,8 +50,8 @@ const App = () => {
             <ShoppingCart/>
           </Route> */}
 
-            <Route path="/signin">
-              <SignIn />
+            <Route path="/signup">
+              <SignUp />
             </Route>
 
             <Route exact path="/Appointment">

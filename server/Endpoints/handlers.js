@@ -138,11 +138,11 @@ const searchTerm = async (req, res) => {
 };
 
 //----------------------------------------------------------------------------
-//                                  getCartexercise
+//                                  getExerciseCart
 //----------------------------------------------------------------------------
 
 //This allows us to get the entire exercise object for the patient in the cart to display
-const getCartExercise = async (req, res) => {
+const getExerciseCart = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
 
@@ -151,15 +151,15 @@ const getCartExercise = async (req, res) => {
   let searchArray = req.body.map((i) => Number(i.product_id));
   try {
     await client.connect();
-    const cartExercise = await db
+    const exerciseCart = await db
       .collection("exercise")
       .find({ _id: { $in: searchArray } })
       .toArray();
 
     client.close();
 
-    if (cartExercise) {
-      res.status(200).json({ status: 200, data: cartExercise });
+    if (exerciseCart) {
+      res.status(200).json({ status: 200, data: exerciseCart });
     } else {
       res.status(404).json({ status: 404, message: "Not found" });
     }
@@ -172,5 +172,5 @@ module.exports = {
   getExerciseByCategory,
   addNewPatient,
   searchTerm,
-  getCartExercise,
+  getExerciseCart,
 };

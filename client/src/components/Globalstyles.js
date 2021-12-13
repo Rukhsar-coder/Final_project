@@ -9,7 +9,8 @@ export default createGlobalStyle`
       --sage: #DCDCD0;
       --dusty-rose: #D3BAB1;
       --max-content-width: 1200px;
-      --font-family: 'Raleway', sans-serif;
+      --font-family: 
+      font-family: 'PT Sans Narrow', sans-serif;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

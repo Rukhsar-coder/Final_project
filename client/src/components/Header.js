@@ -17,16 +17,30 @@ const Header = () => {
               <StyledLink to="/">HOME</StyledLink>
             </LinkItem>
             <LinkItem>
-              <StyledLink to="/about">ABOUT US</StyledLink>
-
-              <StyledLink to="/">WOROUTS</StyledLink>
-
-              <StyledLink to="/">TELEHEALTH</StyledLink>
-              <StyledLink to="/Appointment">BOOK AN APPOINTMENT</StyledLink>
-              <SignInButton to="/signin">
-                LOGIN <PersonIcon />
-              </SignInButton>
+              <StyledLink to="/about">ABOUT </StyledLink>
             </LinkItem>
+            <LinkItem>
+              <StyledLink to="/">WOROUTS</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/">TELEHEALTH</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+            </LinkItem>
+
+            <NavBtn>
+              <LinkItem>
+                <StyledLink to="/signin">
+                  LOGIN
+                  <PersonIcon />
+                </StyledLink>
+              </LinkItem>
+
+              <LinkItem>
+                <SignUpButton to="/signup">SIGNUP</SignUpButton>
+              </LinkItem>
+            </NavBtn>
           </NavContainer>
         </LinksContainer>
       </Wrapper>
@@ -35,17 +49,14 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "roboto", sans-serif;
-  position: sticky;
-  width: 100%;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  background: white;
+  height: 85px;
   display: flex;
-  // background: #f5f5f5;
-  // background: #00ffff;
-  z-index: 9;
-  // background-image: url("background.png");
+  justify-content: space-between;
+
+  padding: 0.2rem calc((100vw - 1000px) / 2);
+  z-index: 12;
 `;
 const LogoStyledLink = styled(Link)`
   background: #f0ffff;
@@ -54,6 +65,7 @@ const LogoStyledLink = styled(Link)`
 const BrandName = styled.img`
   height: 90px;
   width: auto;
+
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #f4f4f4;
@@ -62,69 +74,71 @@ const BrandName = styled.img`
     // background: #00ffff;
   }
 `;
-const SignInButton = styled(NavLink)`
-  padding: 10px 20px;
-  margin-left: 30px;
-  font-weight: 1200;
+const SignUpButton = styled(NavLink)`
+  border-radius: 20px;
+  background: #ccccff;
+  padding: 7px 45px;
+
+  color: #000000;
+  outline: none;
+  border: none;
   cursor: pointer;
-  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  /* Second Nav */
+  margin-left: 24px;
+  // &:hover {
+  //   transition: all 0.2s ease-in-out;
+  //   background: #fff;
+  //   color: #85C1E9;
+  //   cursor: pointer;
+  //   box-shadow: 0 0 10px #f4f4f4;
+  //   transition: 300ms ease-in;
+  //   transform: scale(1.15);
+  // }
+`;
+const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  text-decoration: none;
-  color: black;
-  border: none;
-  // background: #f5f5f5;
-  // background: #7fffd4;
 
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0 0 10px #f4f4f4;
-    transition: 300ms ease-in;
-    transform: scale(1.15);
+  text-decoration: none;
+  margin-right: 24px;
+  /* Third Nav */
+  /* justify-content: flex-end;
+  width: 100vw; */
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
-const LinksContainer = styled.span`
-  width: 100%;
-  display: flex;
-  // justify-content: center;
-  list-style: none;
-  border-top: 1px solid #d1d1d1;
-  // background: #f5f5dc;
-`;
+const LinksContainer = styled.span``;
 
 const NavContainer = styled.div`
   display: flex;
+  align-items: center;
 
-  // background-color: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  // background: #ffe4c4;
+  margin-right: -24px;
+  // @media screen and (max-width: 768px) {
+  //   display: none;
+  // }
 `;
 const LinkItem = styled.div`
-  background: #ffb6c1;
+  color: #85c1e9;
   display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    color: #000000;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  text-transform: capitalize;
-  padding: 0 10px;
-  margin: 0 5px;
   text-decoration: none;
-  justify-content: center;
-  color: #383838;
-  opacity: 0.5;
-  transition: 0.5s;
 
-  justify-content: flex-end;
-  float: left;
-  // color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-
-  // background: #ffa07a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 export default Header;
