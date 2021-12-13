@@ -3,12 +3,14 @@ import styled from "styled-components";
 import About from "./Images/About.jpeg";
 //importing footer and header components
 import Footer from "./Footer";
-import Header from "./Header";
+import { Container } from "@material-ui/core";
+// import Header from "./Header";
 
 const AboutUS = () => {
   return (
     <Div>
       <Wrapper>
+        {/* <UpperContainer> */}
         <Parag1>IT'S TIME TO REHAB SMARTER</Parag1>
         <Para2>
           Physio Rehab is designed to give everyone online access to the highest
@@ -24,7 +26,9 @@ const AboutUS = () => {
           programming, extending our practice from the clinic to the world,
           helping to raise the standard of Physiotherapy industry
         </Para5>
-        <BackgroundImg src={About} alt="Background Image"></BackgroundImg>
+        {/* <BackgroundImg src={About} alt="Background Image"></BackgroundImg> */}
+        {/* </UpperContainer> */}
+        {/* <LowerContainer> */}
         <Para6>
           "Not doing your rehab and expecting to recover 100%, is like not doing
           exercise and expecting to keep fit"
@@ -64,8 +68,11 @@ const AboutUS = () => {
           education and endeavour to provide as much content to you as I
           possible can!""
         </Para9>
+        {/* </LowerContainer> */}
+        <FooterStyled>
+          <Footer />
+        </FooterStyled>
       </Wrapper>
-      <Footer />
     </Div>
   );
 };
@@ -73,13 +80,28 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 100vh;
   top: 85px;
-  position: absolute;
+  // position: absolute;
+  background-size: cover;
+  background-image: url(${About});
 `;
 
 const Wrapper = styled.div`
   display: flex;
+`;
+// const UpperContainer = styled.div``;
+// const LowerContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+const FooterStyled = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // position: absolute;
 `;
 
 const BackgroundImg = styled.img`

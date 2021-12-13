@@ -31,7 +31,7 @@ const ExerciseDeatilPage = () => {
           <ExerciseEquipment>{selectedExercise.equipment}</ExerciseEquipment>
           <ExerciseBodyPart>{selectedExercise.bodyPart}</ExerciseBodyPart>
           <Target>{selectedExercise.target}</Target>
-          <GifUrl>{selectedExercise.gifUrl}</GifUrl>
+          <GifUrl src={selectedExercise.gifUrl}></GifUrl>
         </Wrapper>
       )}
     </Div>
@@ -49,6 +49,6 @@ const ExerciseBodyPart = styled.div``;
 
 const Target = styled.div``;
 const ExerciseEquipment = styled.div``;
-const GifUrl = styled.div``;
+const GifUrl = styled.img``;
 
 export default ExerciseDeatilPage;

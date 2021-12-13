@@ -19,7 +19,7 @@ const HomePage = () => {
         <Para6>Exercise + Explained Detailed note from physiotherapist</Para6>
         <Para7>SIGN-UP FOR MORE DETAIS</Para7>
         <ButtonSignup>Sign up</ButtonSignup>
-        {/* <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg> */}
+        <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg>
       </Wrapper>
     </Div>
   );
@@ -28,13 +28,16 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 25px;
   width: auto;
   height: 100vh;
-  background: #111111;
+  // background: #111111;
+
+  // background: red;
+  background-image: url(${homePage});
+  // background-repeat: no-repeat;
 `;
 
-const BackgroundImg = styled.img`
+const BackgroundImg = styled.div`
 top:50px
   height: 100vh;
   width: 410vh;
@@ -46,8 +49,9 @@ const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   font-family: "roboto", sans-serif;
-
+  left: 100px;
   line-height: 30px;
+  // position: absolute;
 `;
 
 const Para1 = styled.span`

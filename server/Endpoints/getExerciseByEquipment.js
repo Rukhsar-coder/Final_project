@@ -8,33 +8,33 @@ const options = {
   useUnifiedTopology: true,
 };
 
-//>>>>>>>>>>>----- getExerciseByBodyPart ------>>>>>>>>>>>>>>>>>>>>>
-const getAllBodyParts = async (req, res) => {
+//>>>>>>>>>>>----- getExerciseByEquipment ------>>>>>>>>>>>>>>>>>>>>>
+const getExerciseByEquipment = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
-  const bodyPart = req.params.bodyPart;
-  console.log(bodyPart);
+  const equipment = req.params.equipment;
+  console.log(equipment);
 
   try {
     await client.connect();
     console.log("You are connected!");
 
-    const exerciseBybodyPart = await db
+    const exerciseByEquipment = await db
       .collection("Exercise")
-      .find({ bodyPart: bodyPart })
-      .toArray();
+      .findOne({ equipment: equipment });
 
-    console.log(bodyPart);
-    if (exerciseBybodyPart) {
+    console.log(equipment);
+    if (exerciseByEquipment) {
       return res.status(200).json({
         status: 200,
-        data: exerciseBybodyPart,
-        message: "Successfully retrieved Body Parts",
+        data: exerciseByEquipment,
+        message: "Successfully retrieved exercise By Equipment",
       });
     } else {
-      res
-        .status(400)
-        .json({ status: 400, message: "Unable to retrieve Body Parts" });
+      res.status(400).json({
+        status: 400,
+        message: "Unable to retrieve exercise By Equipment",
+      });
     }
     client.close();
     console.log("Disconnected!");
@@ -43,6 +43,6 @@ const getAllBodyParts = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-// getAllBodyParts();
+// getExerciseByEquipment();
 
-module.exports = { getAllBodyParts };
+module.exports = { getExerciseByEquipment };

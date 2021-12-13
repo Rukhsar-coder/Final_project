@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import { Link } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Images/Logo.png";
 import PersonIcon from "@material-ui/icons/Person";
@@ -28,14 +29,13 @@ const Header = () => {
             <LinkItem>
               <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
             </LinkItem>
-
             <NavBtn>
-              <LinkItem>
+              {/* <LinkItem>
                 <StyledLink to="/signin">
                   LOGIN
                   <PersonIcon />
-                </StyledLink>
-              </LinkItem>
+                </StyledLink> */}
+              {/* </LinkItem> */}
 
               <LinkItem>
                 <SignUpButton to="/signup">SIGNUP</SignUpButton>
@@ -73,29 +73,6 @@ const BrandName = styled.img`
     transform: scale(1.05);
     // background: #00ffff;
   }
-`;
-const SignUpButton = styled(NavLink)`
-  border-radius: 20px;
-  background: #ccccff;
-  padding: 7px 45px;
-
-  color: #000000;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  /* Second Nav */
-  margin-left: 24px;
-  // &:hover {
-  //   transition: all 0.2s ease-in-out;
-  //   background: #fff;
-  //   color: #85C1E9;
-  //   cursor: pointer;
-  //   box-shadow: 0 0 10px #f4f4f4;
-  //   transition: 300ms ease-in;
-  //   transform: scale(1.15);
-  // }
 `;
 const NavBtn = styled.nav`
   display: flex;
@@ -142,3 +119,27 @@ const StyledLink = styled(Link)`
   align-items: center;
 `;
 export default Header;
+
+const SignUpButton = styled(NavLink)`
+  border-radius: 20px;
+  background: #ccccff;
+  padding: 7px 45px;
+
+  color: #000000;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  /* Second Nav */
+  margin-left: 24px;
+  // &:hover {
+  //   transition: all 0.2s ease-in-out;
+  //   background: #fff;
+  //   color: #85C1E9;
+  //   cursor: pointer;
+  //   box-shadow: 0 0 10px #f4f4f4;
+  //   transition: 300ms ease-in;
+  //   transform: scale(1.15);
+  // }
+`;

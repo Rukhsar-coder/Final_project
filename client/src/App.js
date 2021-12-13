@@ -10,6 +10,7 @@ import ExerciseDeatilPage from "./components/ExerciseDeatilPage";
 import ErrorPage from "./components/ErrorPage";
 import Appointment from "./components/Appintment";
 import CheckOutForm from "./components/PatientCart/CheckoutForm";
+// import Search from "./components/Search";
 
 // import { ExerciseContext } from "./ExerciseContext";
 import Globalstyles from "./components/Globalstyles";
@@ -64,8 +65,8 @@ const App = () => {
               <ErrorPage />
             </Route>
             {/* <Route path="/searcherror">
-            <SearchError />
-          </Route> */}
+              <Search />
+            </Route> */}
             {/* <Route path="/confirmation/:id">
             <ConfirmationPage />
           </Route> */}

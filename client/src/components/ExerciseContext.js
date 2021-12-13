@@ -86,12 +86,12 @@ export const ExerciseProvider = ({ children }) => {
 
   //the exercise fetch dispatch function set up for pagination.
   //The existing array is duplicated with spread and the concatenated with the new incoming data.
-  // const receiveExerciseInfoFromServer = (data) => {
-  //   dispatch({
-  //     type: "receive-exercise-info-from-server",
-  //     exercise: [...state.exercise].concat(data),
-  //   });
-  // };
+  const receiveExerciseInfoFromServer = (data) => {
+    dispatch({
+      type: "receive-exercise-info-from-server",
+      exercise: [...state.exercise].concat(data),
+    });
+  };
 
   const receiveCategoryExerciseInfoFromServer = (data) => {
     //yet to creat the endpoint
@@ -252,7 +252,7 @@ export const ExerciseProvider = ({ children }) => {
     <ExerciseContext.Provider
       value={{
         state,
-        // receiveExerciseInfoFromServer,
+        receiveExerciseInfoFromServer,
         paginationIndex,
         setPaginationIndex,
         clearPatient,

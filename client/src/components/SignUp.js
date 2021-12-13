@@ -1,37 +1,38 @@
+// import React, { useState } from "react";
 import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 // import SignUpImg from "./Images/SignUp.jpg";
 import { ExerciseContext } from "./ExerciseContext";
-// import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const SignUp = ({ handleClose }) => {
-  // const history = useHistory();
+  const history = useHistory();
 
-  //consume context
-  // const { setUser } = useContext(ExerciseContext);
-  //verify the user is a user with fetch
-  //fetch is initiated with the signin submit button
-  // const handleSignin = (ev) => {
-  //   ev.preventDefault();
-  //   fetch("/api/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify({ name: firstName }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data.name);
-  //       window.sessionStorage.setItem("name", `${data.data.name}`);
-  //       setUser(data.data);
-  //       // history.push("/");
-  //     });
-  //   // .catch((err) => history.push("/errorpage"));
-  // };
+  // consume context
+  const { setUser } = useContext(ExerciseContext);
+  // verify the user is a user with fetch
+  // fetch is initiated with the signin submit button
+  const handleSignin = (ev) => {
+    ev.preventDefault();
+    fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ name: firstName }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.name);
+        window.sessionStorage.setItem("name", `${data.data.name}`);
+        setUser(data.data);
+        history.push("/");
+      })
+      .catch((err) => history.push("/errorpage"));
+  };
 
   const classes = useStyles();
   // create state variables for each input
@@ -46,8 +47,8 @@ const SignUp = ({ handleClose }) => {
     handleClose();
   };
   return (
-    <form className={classes.root} onSubmit={handleSubmit}>
-      {/* <form className={classes.root} onSubmit={(handleSubmit, handleSignin)}></form> */}
+    // <form className={classes.root} onSubmit={handleSubmit}>
+    <form className={classes.root} onSubmit={(handleSubmit, handleSignin)}>
       {/* <img src={SignUpImg} alt="Background "></img> */}
       {/* <div style="background-image: url('SignUpImg.jpg');"></div> */}
 

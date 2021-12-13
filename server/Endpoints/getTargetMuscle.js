@@ -8,32 +8,34 @@ const options = {
   useUnifiedTopology: true,
 };
 
-//>>>>>>>>>>>----- getExerciseById ------>>>>>>>>>>>>>>>>>>>>>
-const getExerciseById = async (req, res) => {
+//>>>>>>>>>>>----- getTargetMuscle ------>>>>>>>>>>>>>>>>>>>>>
+const getTargetMuscle = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
-
-  //Transform _id string to number so we can use it to search for exercise _id
-  const id = req.params.id;
-  console.log(id);
+  const target = req.params.target;
+  console.log(target);
 
   try {
     await client.connect();
     console.log("You are connected!");
 
-    const exerciseById = await db.collection("Exercise").findOne({ id: id });
+    const targetMuscle = await db
+      .collection("Exercise")
+      .find({ target: target })
+      .toArray();
 
-    console.log(id);
-    if (exerciseById) {
+    console.log(target);
+    console.log(targetMuscle);
+    if (targetMuscle) {
       return res.status(200).json({
         status: 200,
-        data: exerciseById,
-        message: "Successfully retrieved Single Exercise",
+        data: targetMuscle,
+        message: "Successfully retrieved target Muscle",
       });
     } else {
       res
         .status(400)
-        .json({ status: 400, message: "Unable to retrieve Single Exercise" });
+        .json({ status: 400, message: "Unable to retrieve target Muscle" });
     }
     client.close();
     console.log("Disconnected!");
@@ -42,6 +44,6 @@ const getExerciseById = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-// getExerciseById();
+// getTargetMuscle();
 
-module.exports = { getExerciseById };
+module.exports = { getTargetMuscle };
