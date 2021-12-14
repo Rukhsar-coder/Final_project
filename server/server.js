@@ -5,8 +5,12 @@ const express = require("express");
 const { getExerciseInfo } = require("./Endpoints/getExerciseInfo");
 const { getExerciseById } = require("./Endpoints/getExerciseById");
 const { getAllBodyParts } = require("./Endpoints/getAllBodyParts");
-// const { getExerciseByEquipment } = require("./Endpoints/getExerciseByEquipment");
+const {
+  getExerciseByEquipment,
+} = require("./Endpoints/getExerciseByEquipment");
 const { getTargetMuscle } = require("./Endpoints/getTargetMuscle");
+const { getOrder } = require("./Endpoints/getOrder");
+
 //---------------------------------------------
 
 const {
@@ -25,9 +29,11 @@ app.use(express.json());
 app.get("/api/exerciseinfo", getExerciseInfo);
 app.get("/api/exerciseinfo/:id", getExerciseById);
 app.get("/api/exerciseinfo_bodyPart/:bodyPart", getAllBodyParts);
-// app.get("/api/exerciseinfo/:equipment", getExerciseByEquipment);
+app.get("/api/exerciseinfo_equipment/:equipment", getExerciseByEquipment);
 app.get("/api/exerciseinfo_target/:target", getTargetMuscle);
 //----------------------------------------------------------------
+app.get("/api/order/:_id", getOrder);
+
 //api to get all exercise target as category
 app.get("/api/exercise-target-as/:category", getExerciseByCategory);
 

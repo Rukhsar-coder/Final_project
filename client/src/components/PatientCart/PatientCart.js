@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ExerciseContext } from "../ExerciseContext";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 //children
 import ExerciseCart from "./ExerciseCart";

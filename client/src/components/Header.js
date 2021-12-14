@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { Link } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Images/Logo.png";
-import PersonIcon from "@material-ui/icons/Person";
+// import PersonIcon from "@material-ui/icons/Person";
 
 const Header = () => {
   return (
@@ -21,7 +21,7 @@ const Header = () => {
               <StyledLink to="/about">ABOUT </StyledLink>
             </LinkItem>
             <LinkItem>
-              <StyledLink to="/">WOROUTS</StyledLink>
+              <StyledLink to="/workout ">WORKOUTS</StyledLink>
             </LinkItem>
             <LinkItem>
               <StyledLink to="/">TELEHEALTH</StyledLink>
@@ -49,12 +49,11 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  font-family: "Poppins", Helvetica, Arial, sans-serif;
   background: white;
   height: 85px;
   display: flex;
   justify-content: space-between;
-
+  font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
   padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
 `;
@@ -63,15 +62,14 @@ const LogoStyledLink = styled(Link)`
   margin-left: 0px;
 `;
 const BrandName = styled.img`
-  height: 90px;
+  height: 79px;
   width: auto;
-
+  margin-left: -325px;
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #f4f4f4;
     transition: 300ms ease-in;
     transform: scale(1.05);
-    // background: #00ffff;
   }
 `;
 const NavBtn = styled.nav`
@@ -117,29 +115,49 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 23px;
+  color: gray;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px #f4f4f4;
+    transition: 300ms ease-in;
+    transform: scale(1.05);
+  }
 `;
 export default Header;
 
 const SignUpButton = styled(NavLink)`
+  font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   border-radius: 20px;
-  background: #ccccff;
-  padding: 7px 45px;
-
+  // background: #ccccff;
+  padding: 15px 65px;
+  color: gray;
+  font-size: 23px;
+  margin-left: -80px;
   color: #000000;
   outline: none;
   border: none;
   cursor: pointer;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   /* Second Nav */
   margin-left: 24px;
-  // &:hover {
-  //   transition: all 0.2s ease-in-out;
-  //   background: #fff;
-  //   color: #85C1E9;
-  //   cursor: pointer;
-  //   box-shadow: 0 0 10px #f4f4f4;
-  //   transition: 300ms ease-in;
-  //   transform: scale(1.15);
-  // }
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #85c1e9;
+    cursor: pointer;
+    box-shadow: 0 0 10px #f4f4f4;
+    transition: 300ms ease-in;
+    transform: scale(1.15);
+  }
 `;

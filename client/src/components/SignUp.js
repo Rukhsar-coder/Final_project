@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 // import SignUpImg from "./Images/SignUp.jpg";
 import { ExerciseContext } from "./ExerciseContext";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 const SignUp = ({ handleClose }) => {
   const history = useHistory();
@@ -48,7 +49,10 @@ const SignUp = ({ handleClose }) => {
   };
   return (
     // <form className={classes.root} onSubmit={handleSubmit}>
-    <form className={classes.root} onSubmit={(handleSubmit, handleSignin)}>
+    <FormContainer
+      className={classes.root}
+      onSubmit={(handleSubmit, handleSignin)}
+    >
       {/* <img src={SignUpImg} alt="Background "></img> */}
       {/* <div style="background-image: url('SignUpImg.jpg');"></div> */}
 
@@ -90,10 +94,19 @@ const SignUp = ({ handleClose }) => {
           Signup
         </Button>
       </div>
-    </form>
+    </FormContainer>
   );
 };
 
+const FormContainer = styled.form`
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(84, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+`;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",

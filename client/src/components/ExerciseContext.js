@@ -13,7 +13,6 @@ const initialState = {
 const patientInitialState = {
   firstName: "",
   lastName: "",
-  phoneNum: "",
   email: "",
   cart: [],
 };
@@ -43,14 +42,14 @@ function reducer(state, action) {
       };
     }
 
-    case "update-document-cart": {
+    case "update-patient-cart": {
       return {
         ...state,
         cart: action.cart,
       };
     }
 
-    case "clear-document-cart": {
+    case "clear-patient-cart": {
       return {
         ...state,
         cart: [],

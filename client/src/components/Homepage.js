@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import homePage from "./Images/homePage.jpg";
+import { BsArrowRightShort } from "react-icons/bs";
 
 const HomePage = () => {
   return (
@@ -10,14 +11,31 @@ const HomePage = () => {
         <Para2>
           <b>THE PLACE</b> to get the most effective Physio exercises,
           professional Acessment, educational information + structured
+        </Para2>
+        <Para22>
           rehabilitation programs for injuries, surgery, strengthening +
           mobility
-        </Para2>
-        <Para3>Structure + easy to follow up</Para3>
-        <Para4>Detailed program layouts</Para4>
-        <Para5>Extensive week-to-week instruction</Para5>
-        <Para6>Exercise + Explained Detailed note from physiotherapist</Para6>
-        <Para7>SIGN-UP FOR MORE DETAIS</Para7>
+        </Para22>
+        <Para3>
+          <BsArrowRightShort />
+          Structure + easy to follow up
+        </Para3>
+        <Para4>
+          <BsArrowRightShort />
+          Detailed program layouts
+        </Para4>
+        <Para5>
+          <BsArrowRightShort />
+          Extensive week-to-week instruction
+        </Para5>
+        <Para6>
+          <BsArrowRightShort />
+          Exercise + Explained Detailed note from physiotherapist
+        </Para6>
+        <Para7>
+          <BsArrowRightShort />
+          SIGN-UP FOR MORE DETAIS
+        </Para7>
         <ButtonSignup>Sign up</ButtonSignup>
         <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg>
       </Wrapper>
@@ -30,9 +48,6 @@ const Div = styled.div`
   align-items: center;
   width: auto;
   height: 100vh;
-  // background: #111111;
-
-  // background: red;
   background-image: url(${homePage});
   // background-repeat: no-repeat;
 `;
@@ -48,74 +63,86 @@ const Wrapper = styled.div`
   padding-top: 60px;
   justify-content: center;
   text-align: center;
+  margin-left: -1800px;
   font-family: "roboto", sans-serif;
   left: 100px;
   line-height: 30px;
-  // position: absolute;
 `;
 
 const Para1 = styled.span`
   top: 125px;
   position: absolute;
   padding: 80px;
-  font-size: 25px;
+  font-size: 35px;
   background: A9A9A9;
   color: white;
 `;
 const Para2 = styled.span`
-  top: 160px;
+  top: 190px;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
+  color: white;
+
+  line-height: 30px;
+`;
+
+const Para22 = styled.span`
+  top: 240px;
+  position: absolute;
+  padding: 80px;
+  font-size: 25px;
   color: white;
 
   line-height: 30px;
 `;
 const Para3 = styled.span`
-  top: 210px;
+  top: 280px;
   font-family: "roboto", sans-serif;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
 
   line-height: 30px;
 `;
 const Para4 = styled.span`
-  top: 230px;
+  top: 310px;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
 `;
 const Para5 = styled.span`
-  top: 250px;
+  top: 340px;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
 
   color: white;
 `;
 const Para6 = styled.span`
-  top: 270px;
+  top: 370px;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
 `;
 const Para7 = styled.span`
-  top: 290px;
+  top: 400px;
   position: absolute;
   padding: 80px;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
 `;
 const ButtonSignup = styled.button`
-  top: 450px;
+  top: 550px;
   position: absolute;
   padding: 15px 85px;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 35px;
+
+  margin-left: 80px;
   border: none;
   &:hover {
     cursor: pointer;

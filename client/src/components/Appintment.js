@@ -5,7 +5,7 @@ import Call from "./Images/Call.png";
 import Email from "./Images/Email.png";
 import Online from "./Images/Online.png";
 import SignUpImg from "./Images/SignUpImg.jpg";
-
+import { Link } from "react-router-dom";
 const BookAppointment = () => {
   return (
     <Div>
@@ -27,17 +27,19 @@ const BookAppointment = () => {
         <EmailImg1 src={Email} alt="Email Image"></EmailImg1>
         <Para4>reception@physiorehab.com.ca</Para4>
         <OnlineImg1 src={Online} alt="Email Image"></OnlineImg1>
-        <BookButton>Book online Now</BookButton>
+        <BookButton to="/errorpage" style={{ textDecoration: "none" }}>
+          Book online Now
+        </BookButton>
       </Wrapper>
     </Div>
   );
 };
 const Div = styled.div`
   display: flex;
+  font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
+
   justify-content: center;
   align-items: center;
-  //   background: #111111;
-
   position: absolute;
 `;
 const Wrapper = styled.div``;
@@ -54,11 +56,11 @@ const BackgroundImg = styled.img`
 // background: #111111;
 //     `;
 const Para1 = styled.span`
-  top: 35px;
+  top: -20px;
   position: absolute;
   padding: 80px;
-  margin-left: 520px;
-  font-size: 25px;
+  margin-left: 620px;
+  font-size: 35px;
   color: white;
   font-weight: 900;
   
@@ -155,7 +157,7 @@ const Para4 = styled.span`
     // background: #00ffff;
   }
 `;
-const BookButton = styled.span`
+const BookButton = styled(Link)`
   top: 550px;
   position: absolute;
   display: row;
@@ -166,7 +168,6 @@ const BookButton = styled.span`
   color: white;
   font-weight: 900;
   padding: 25px;
-  // background: #2f5f8f;
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #f4f4f4;

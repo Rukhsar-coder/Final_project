@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router";
 import { ExerciseContext } from "./ExerciseContext";
 import Spinner from "./Spinner";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 //styling
 import styled from "styled-components";

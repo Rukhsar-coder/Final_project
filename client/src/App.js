@@ -10,17 +10,14 @@ import ExerciseDeatilPage from "./components/ExerciseDeatilPage";
 import ErrorPage from "./components/ErrorPage";
 import Appointment from "./components/Appintment";
 import CheckOutForm from "./components/PatientCart/CheckoutForm";
-// import Search from "./components/Search";
-
+import Search from "./components/Search";
+import PatientCart from "./components/PatientCart/PatientCart";
+import ConfirmationPage from "./components/ConfirmationPage";
 // import { ExerciseContext } from "./ExerciseContext";
 import Globalstyles from "./components/Globalstyles";
 
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
-  //consume context
-  // const { user } = useContext(ExerciseContext);
-  // let signedinUser = window.sessionStorage.getItem("name");
-
   return (
     <>
       <BrowserRouter>
@@ -33,11 +30,11 @@ const App = () => {
             </Route>
             {/* <Route path="/category/:type"> //TODO: 
             <Category />
-          </Route>
-          <Route path="/search/:type">
-            <Search />
-          </Route>
-        */}
+          </Route> */}
+            <Route path="/search/:type">
+              <Search />
+            </Route>
+
             <Route path="/about">
               <AboutUs />
             </Route>
@@ -47,9 +44,9 @@ const App = () => {
             <Route exact path="/exerciseinfo/:id">
               <ExerciseDeatilPage />
             </Route>
-            {/* <Route exact path="/patient-cart">
-            <ShoppingCart/>
-          </Route> */}
+            <Route exact path="/patient-cart">
+              <PatientCart />
+            </Route>
 
             <Route path="/signup">
               <SignUp />
@@ -64,12 +61,12 @@ const App = () => {
             <Route path="/errorpage">
               <ErrorPage />
             </Route>
-            {/* <Route path="/searcherror">
+            <Route path="/searcherror">
               <Search />
-            </Route> */}
-            {/* <Route path="/confirmation/:id">
-            <ConfirmationPage />
-          </Route> */}
+            </Route>
+            <Route path="/confirmation/:id">
+              <ConfirmationPage />
+            </Route>
           </Switch>
         </Main>
       </BrowserRouter>
