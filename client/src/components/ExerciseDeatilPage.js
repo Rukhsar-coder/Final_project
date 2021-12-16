@@ -44,7 +44,12 @@ const Div = styled.div`
 
   font-family: "roboto", sans-serif;
 `;
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30px;
+`;
 // const ExerciseDescription = styled.div``;
 const ExerciseName = styled.div``;
 const ExerciseBodyPart = styled.div``;

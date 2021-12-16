@@ -15,7 +15,10 @@ import PatientCart from "./components/PatientCart/PatientCart";
 import ConfirmationPage from "./components/ConfirmationPage";
 // import { ExerciseContext } from "./ExerciseContext";
 import Globalstyles from "./components/Globalstyles";
-
+import AllWorkout from "./components/Workout/AllWorkout";
+import PatientForm from "./components/PatientCart/PatientForm";
+import PhysioSignIn from "./components/PhysioSignIn";
+import ListOfPatients from "./components/ListOfPatients";
 //https://v5.reactrouter.com/web/api/Switch
 const App = () => {
   return (
@@ -38,8 +41,15 @@ const App = () => {
             <Route path="/about">
               <AboutUs />
             </Route>
-            <Route exact path="/exerciseinfo">
-              {/* <AllExercises /> */}
+
+            <Route path="/patientform">
+              <PatientForm />
+            </Route>
+            <Route exact path="/workout">
+              <AllWorkout />
+            </Route>
+            <Route path="/form">
+              <AboutUs />
             </Route>
             <Route exact path="/exerciseinfo/:id">
               <ExerciseDeatilPage />
@@ -48,8 +58,15 @@ const App = () => {
               <PatientCart />
             </Route>
 
+            <Route path="/PhysioSignIn">
+              <PhysioSignIn />
+            </Route>
+
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route exact path="/Patients-List">
+              <ListOfPatients />
             </Route>
 
             <Route exact path="/Appointment">
@@ -64,7 +81,7 @@ const App = () => {
             <Route path="/searcherror">
               <Search />
             </Route>
-            <Route path="/confirmation/:id">
+            <Route path="/confirmation">
               <ConfirmationPage />
             </Route>
           </Switch>

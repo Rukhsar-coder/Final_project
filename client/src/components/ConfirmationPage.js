@@ -1,32 +1,22 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-
+import { Link } from "react-router-dom";
 //styling and icons
 import styled from "styled-components";
 import { FaCheckCircle } from "react-icons/fa";
 
 //importing header and footer components
 import Footer from "./Footer";
-import Header from "./Header";
 
 //date formatter
 import { format } from "date-fns";
 
 const ConfirmationPage = () => {
   const { id } = useParams();
-  let patientInfo = JSON.parse(window.localStorage.getExercise("checkOutInfo"));
-
-  useEffect(() => {
-    return () => {
-      window.localStorage.clear();
-    };
-  }, []);
 
   return (
     <>
-      {/* <Header /> */}
-      <Wrapper>
-        <Header />
+      <Wrapper to="/confirmation">
         <FaCheckCircle size={40} />
         <AssessmentReceived>
           Doctor has created you Assessment Exercise List.
@@ -42,7 +32,7 @@ const ConfirmationPage = () => {
               {format(new Date(), "EEE MMM dd yyy")}
             </Paragraph>
             <Paragraph>
-              <Span>Patient Name:</Span> {patientInfo.firstName}
+              {/* <Span>Patient Name:</Span> {patientInfo.firstName} */}
             </Paragraph>
             <Paragraph>
               Please keep your Exercise number for reference. Please allow up to
@@ -60,16 +50,21 @@ const ConfirmationPage = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
+  // margin-bottom: 55px;
   font-family: var(--font-family);
-  background-color: var(--dusty-rose);
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 34%,
+    rgba(45, 112, 253, 1) 100%
+  );
   flex-direction: column;
 `;
-
 const ConfirmationContainer = styled.div`
   width: 900px;
   height: 400px;

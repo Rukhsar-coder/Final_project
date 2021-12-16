@@ -120,7 +120,7 @@ const Para2 = styled.span`
   }
 `;
 const Para3 = styled.span`
-  top: 210px;
+  top: 230px;
   position: absolute;
   display: row;
 
@@ -158,12 +158,12 @@ const Para4 = styled.span`
   }
 `;
 const BookButton = styled(Link)`
-  top: 550px;
+  top: 570px;
   position: absolute;
   display: row;
   border-radius: 25px;
   border: none;
-  margin-left: 310px;
+  margin-left: 390px;
   font-size: 25px;
   color: white;
   font-weight: 900;

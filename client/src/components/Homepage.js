@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import homePage from "./Images/homePage.jpg";
 import { BsArrowRightShort } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -14,7 +15,7 @@ const HomePage = () => {
         </Para2>
         <Para22>
           rehabilitation programs for injuries, surgery, strengthening +
-          mobility
+          mobility.
         </Para22>
         <Para3>
           <BsArrowRightShort />
@@ -32,11 +33,11 @@ const HomePage = () => {
           <BsArrowRightShort />
           Exercise + Explained Detailed note from physiotherapist
         </Para6>
-        <Para7>
-          <BsArrowRightShort />
-          SIGN-UP FOR MORE DETAIS
-        </Para7>
-        <ButtonSignup>Sign up</ButtonSignup>
+        <Para7>SIGN-UP FOR MORE DETAIS</Para7>
+        <SignupLink to="/signup">
+          <ButtonSignup>Sign up</ButtonSignup>
+        </SignupLink>
+
         <BackgroundImg src={homePage} alt="Background Image"></BackgroundImg>
       </Wrapper>
     </Div>
@@ -51,6 +52,7 @@ const Div = styled.div`
   background-image: url(${homePage});
   // background-repeat: no-repeat;
 `;
+const SignupLink = styled(Link)``;
 
 const BackgroundImg = styled.div`
 top:50px
@@ -70,15 +72,16 @@ const Wrapper = styled.div`
 `;
 
 const Para1 = styled.span`
-  top: 125px;
+  top: 115px;
   position: absolute;
   padding: 80px;
-  font-size: 35px;
+  font-size: 45px;
   background: A9A9A9;
+  font-weight: 600;
   color: white;
 `;
 const Para2 = styled.span`
-  top: 190px;
+  top: 180px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
@@ -88,7 +91,7 @@ const Para2 = styled.span`
 `;
 
 const Para22 = styled.span`
-  top: 240px;
+  top: 220px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
@@ -97,46 +100,47 @@ const Para22 = styled.span`
   line-height: 30px;
 `;
 const Para3 = styled.span`
-  top: 280px;
-  font-family: "roboto", sans-serif;
+  top: 300px;
+  // font-family: "roboto", sans-serif;
   position: absolute;
-  padding: 80px;
+  padding: 70px;
   font-size: 25px;
   color: white;
 
   line-height: 30px;
 `;
 const Para4 = styled.span`
-  top: 310px;
+  top: 350px;
   position: absolute;
-  padding: 80px;
+  padding: 70px;
   font-size: 25px;
   color: white;
 `;
 const Para5 = styled.span`
-  top: 340px;
+  top: 400px;
   position: absolute;
-  padding: 80px;
+  padding: 70px;
   font-size: 25px;
 
   color: white;
 `;
 const Para6 = styled.span`
-  top: 370px;
+  top: 450px;
   position: absolute;
-  padding: 80px;
+  padding: 70px;
   font-size: 25px;
   color: white;
 `;
 const Para7 = styled.span`
-  top: 400px;
+  top: 520px;
   position: absolute;
   padding: 80px;
-  font-size: 25px;
+  font-size: 30px;
   color: white;
+  font-weight: 600;
 `;
 const ButtonSignup = styled.button`
-  top: 550px;
+  top: 680px;
   position: absolute;
   padding: 15px 85px;
   font-size: 25px;
@@ -149,7 +153,13 @@ const ButtonSignup = styled.button`
     box-shadow: 0 0 10px #f4f4f4;
     transition: 300ms ease-in;
     transform: scale(1.05);
-    // background: #00ffff;
+    // background: #94bbe9;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(
+      circle,
+      rgba(63, 94, 251, 1) 0%,
+      rgba(70, 252, 216, 1) 100%
+    );
   }
 `;
 // const Para9 = styled.span``;

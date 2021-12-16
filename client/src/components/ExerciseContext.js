@@ -80,9 +80,11 @@ export const ExerciseProvider = ({ children }) => {
   const [paginationIndex, setPaginationIndex] = useState(0);
   //to save the log in paitent information in sessionStorage
   const [user, setUser] = useState();
+  const [physio, setPhysio] = useState();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [patientInfo, setPatientInfo] = useState(patientInitialState);
 
+  const [currentPage, setCurrentPage] = useState(1);
   //the exercise fetch dispatch function set up for pagination.
   //The existing array is duplicated with spread and the concatenated with the new incoming data.
   const receiveExerciseInfoFromServer = (data) => {
@@ -109,7 +111,7 @@ export const ExerciseProvider = ({ children }) => {
   };
 
   const clearPatient = () => {
-    window.localStorage.removeExercise("cart");
+    window.localStorage.removeItem("cart");
     dispatch({
       type: "clear-patient-cart",
       cart: [],
@@ -267,6 +269,10 @@ export const ExerciseProvider = ({ children }) => {
         setPatientInfo,
         user,
         setUser,
+        currentPage,
+        setCurrentPage,
+        physio,
+        setPhysio,
       }}
     >
       {children}

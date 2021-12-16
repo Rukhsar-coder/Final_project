@@ -8,31 +8,31 @@ const options = {
   useUnifiedTopology: true,
 };
 
-//>>>>>>>>>>>----- getExerciseById ------>>>>>>>>>>>>>>>>>>>>>
-const getExerciseById = async (req, res) => {
+// use this package to generate unique ids: https://www.npmjs.com/package/uuid
+const { v4: uuidv4 } = require("uuid");
+
+//>>>>>>>>>>>----- addToCart ------>>>>>>>>>>>>>>>>>>>>>
+const getAllPatient = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
 
-  //Transform _id string to number so we can use it to search for exercise _id
-  const id = req.params.id;
-  // console.log(id);
   try {
     await client.connect();
     console.log("You are connected!");
 
-    const exerciseById = await db.collection("Exercise").findOne({ id: id });
+    const getAllPatient = await db.collection("patient").find().toArray();
 
-    console.log(exerciseById);
-    if (exerciseById) {
+    console.log(getAllPatient);
+    if (getAllPatient) {
       return res.status(200).json({
         status: 200,
-        data: exerciseById,
-        message: "Successfully retrieved Single Exercise",
+        data: addOneExercise,
+        message: "Successfully retrive all Patient",
       });
     } else {
       res
         .status(400)
-        .json({ status: 400, message: "Unable to retrieve Single Exercise" });
+        .json({ status: 400, message: "Unable to retrive all Patient" });
     }
     client.close();
     console.log("Disconnected!");
@@ -41,6 +41,5 @@ const getExerciseById = async (req, res) => {
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-// getExerciseById();
 
-module.exports = { getExerciseById };
+module.exports = { getAllPatient };

@@ -26,8 +26,8 @@ const Loading = styled(FiLoader)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  width: 30px;
+  margin-top: 250px;
+  width: 140px;
   animation: ${spin} 2000ms infinite linear;
 `;
 

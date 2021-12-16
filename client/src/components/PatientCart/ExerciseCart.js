@@ -5,8 +5,7 @@ import { ExerciseContext } from "../ExerciseContext";
 import styled from "styled-components";
 
 const ExerciseCart = ({ exercise, cart }) => {
-  const { state, addQuantity, lowerQuantity, removeExercise } =
-    useContext(ExerciseContext);
+  const { state, removeExercise } = useContext(ExerciseContext);
 
   let cartInfo = [];
   if (state.hasLoaded) {
@@ -17,9 +16,6 @@ const ExerciseCart = ({ exercise, cart }) => {
     });
   }
 
-  let disabledLower = cartInfo[0]?.quantity === 1 ? true : false;
-  let disabledAdd = cartInfo[0]?.quantity < exercise[0] ? false : true;
-
   return (
     <Wrapper>
       <ImgWrapper>
@@ -28,20 +24,6 @@ const ExerciseCart = ({ exercise, cart }) => {
       <NameWrapper>
         <Name>{exercise.name}</Name>
       </NameWrapper>
-      <Qtypara>SET</Qtypara>
-      <OrderQTY>{cartInfo[0]?.quantity}</OrderQTY>
-      <StyledBtn onClick={() => addQuantity(cartInfo)} disabled={disabledAdd}>
-        {" "}
-        +{" "}
-      </StyledBtn>
-      <StyledBtn
-        onClick={() => lowerQuantity(cartInfo)}
-        disabled={disabledLower}
-      >
-        {" "}
-        -{" "}
-      </StyledBtn>
-
       <RemoveBtn onClick={() => removeExercise(cartInfo)}>Remove</RemoveBtn>
     </Wrapper>
   );
@@ -85,37 +67,6 @@ const Name = styled.p`
   font-size: 10px;
   font-weight: bolder;
 `;
-
-const Qtypara = styled.span`
-  font-size: 10px;
-  color: var(--cool-gray);
-  font-weight: bolder;
-`;
-
-const StyledBtn = styled.button`
-  display: inline;
-  width: 20px;
-  height: 20px;
-  color: var(--cool-gray);
-  font-weight: bolder;
-  background: transparent;
-  border: none;
-  border-radius: 50%;
-  margin: 5px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    color: black;
-  }
-`;
-
-const OrderQTY = styled.span`
-  font-size: 12px;
-  font-weight: bolder;
-  padding: 5px;
-`;
-
 const RemoveBtn = styled.button`
   display: inline-block;
   background-color: transparent;

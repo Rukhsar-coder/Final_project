@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { ExerciseContext } from "../ExerciseContext";
 import { useHistory } from "react-router-dom";
 
@@ -11,13 +10,12 @@ import styled from "styled-components";
 
 const CheckOutForm = () => {
   let history = useHistory();
-  const { state, patientInfo, setPatientInfo, clearPatient } =
+  const { state, patientInfo, setPatientInfo, clearPatient, user } =
     useContext(ExerciseContext);
 
-  const { user, isAuthenticated } = useAuth0();
-
   useEffect(() => {
-    if (isAuthenticated) {
+    if (!user) {
+      //Authentication for user missing
       setPatientInfo({
         ...patientInfo,
         firstName: user.given_name,
@@ -46,6 +44,7 @@ const CheckOutForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status !== 200) {
           return <h1>please fill the missing info</h1>;
         } else {
@@ -89,17 +88,6 @@ const CheckOutForm = () => {
           ></Input>
         </Label>
         <Label>
-          Phone Number:
-          <Input
-            type="tel"
-            value={patientInfo.phoneNum}
-            id="phoneNum"
-            onChange={getInfo}
-            placeholder="Phone Number"
-            required
-          ></Input>
-        </Label>
-        <Label>
           email:
           <Input
             type="email"
@@ -109,63 +97,6 @@ const CheckOutForm = () => {
             placeholder="Last Name"
             required
           ></Input>
-        </Label>
-        <Label>
-          Address:
-          <Input
-            type="text"
-            value={patientInfo.address}
-            id="address"
-            onChange={getInfo}
-            placeholder="Address"
-            required
-          ></Input>
-        </Label>
-        <Label>
-          City:
-          <Input
-            type="text"
-            value={patientInfo.city}
-            id="city"
-            onChange={getInfo}
-            placeholder="City"
-            required
-          ></Input>
-        </Label>
-        <Label>
-          Postal Code:
-          <Input
-            type="text"
-            value={patientInfo.postalCode}
-            id="postalCode"
-            onChange={getInfo}
-            placeholder="postal code"
-            required
-          ></Input>
-        </Label>
-        <Label>
-          <Select
-            onChange={getInfo}
-            value={patientInfo.province}
-            id="province"
-            required
-          >
-            <option value disabled>
-              Province
-            </option>
-            <option defaultValue="AB">Alberta</option>
-            <option value="BC">British Colombia</option>
-            <option value="MB">Manitoba</option>
-            <option value="NB">New Brunswick</option>
-            <option value="NL">Newfoundland and Labrador</option>
-            <option value="NS">Nova Scotia</option>
-            <option value="NU">Nunavut</option>
-            <option value="ON">Ontario</option>
-            <option value="PEI">Prince Edward Island</option>
-            <option value="QC">Quebec</option>
-            <option value="SK">Saskatchewan</option>
-            <option value="YT">Yukon</option>
-          </Select>
         </Label>
         <Submit type="submit">Submit</Submit>
       </Form>
@@ -191,11 +122,6 @@ const SideBar = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
-const Select = styled.select`
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-`;
 const Input = styled.input`
   margin-left: 10px;
   width: 190px;

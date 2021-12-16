@@ -14,6 +14,12 @@ const Header = () => {
             <LogoStyledLink to="/">
               <BrandName src={Logo} alt="Logo"></BrandName>
             </LogoStyledLink>
+            {/* <SubLinkItem>
+              <LinkItem>
+                <StyledLink to="/">PHYSIO REHAB</StyledLink>
+              </LinkItem>
+            </SubLinkItem> */}
+            {/* <SubLinkContainer> */}
             <LinkItem>
               <StyledLink to="/">HOME</StyledLink>
             </LinkItem>
@@ -27,8 +33,18 @@ const Header = () => {
               <StyledLink to="/">TELEHEALTH</StyledLink>
             </LinkItem>
             <LinkItem>
+              <StyledLink to="/patientform">FORM</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/Patients-List">PATIENTS</StyledLink>
+            </LinkItem>
+            <LinkItem>
               <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
             </LinkItem>
+            {/* </SubLinkContainer> */}
             <NavBtn>
               {/* <LinkItem>
                 <StyledLink to="/signin">
@@ -39,6 +55,9 @@ const Header = () => {
 
               <LinkItem>
                 <SignUpButton to="/signup">SIGNUP</SignUpButton>
+              </LinkItem>
+              <LinkItem>
+                <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
               </LinkItem>
             </NavBtn>
           </NavContainer>
@@ -54,9 +73,10 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
-  padding: 0.2rem calc((100vw - 1000px) / 2);
+  padding: 0.4rem calc((100vw - 1000px) / 4);
   z-index: 12;
 `;
+// const SubLinkContainer = styled.span``;
 const LogoStyledLink = styled(Link)`
   background: #f0ffff;
   margin-left: 0px;
@@ -64,7 +84,7 @@ const LogoStyledLink = styled(Link)`
 const BrandName = styled.img`
   height: 79px;
   width: auto;
-  margin-left: -325px;
+  margin-left: -225px;
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #f4f4f4;
@@ -72,10 +92,15 @@ const BrandName = styled.img`
     transform: scale(1.05);
   }
 `;
+// const SubLinkItem = styled.div`
+//   display: flex;
+//   align-items: center;
+//   font-style: italic;
+//   justify-content: center;
+// `;
 const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-
   text-decoration: none;
   margin-right: 24px;
   /* Third Nav */
@@ -91,7 +116,6 @@ const LinksContainer = styled.span``;
 const NavContainer = styled.div`
   display: flex;
   align-items: center;
-
   margin-right: -24px;
   // @media screen and (max-width: 768px) {
   //   display: none;
@@ -111,7 +135,6 @@ const LinkItem = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -132,25 +155,23 @@ const SignUpButton = styled(NavLink)`
   font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
   font-weight: 600;
   border-radius: 20px;
-  // background: #ccccff;
-  padding: 15px 65px;
+  padding: 15px 50px;
   color: gray;
   font-size: 23px;
-  margin-left: -80px;
   color: #000000;
   outline: none;
   border: none;
   cursor: pointer;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
   );
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   /* Second Nav */
-  margin-left: 24px;
+  margin-left: 30px;
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;

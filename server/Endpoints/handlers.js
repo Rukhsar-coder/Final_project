@@ -7,6 +7,8 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
+// use this package to generate unique ids: https://www.npmjs.com/package/uuid
+const { v4: uuidv4 } = require("uuid");
 
 //>>>>>>>>>>>----- getExerciseByCategory  ------>>>>>>>>>>>>>>>>>>>>>
 const getExerciseByCategory = async (req, res) => {
@@ -52,46 +54,24 @@ const getExerciseByCategory = async (req, res) => {
 const addNewPatient = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
-
-  const { email, cart } = req.body;
-
   await client.connect();
   console.log("connected");
 
-  const patientList = await db.collection("patient").find().toArray();
-
-  const exerciseId = uuidv4();
-  const exercises = cart.map((exercise) => {
-    return { ...exercise, exerciseId, date: new Date() };
-  });
-
   //check to see if user already exists so we add the exercise info to that user instead of creating a new document in the collection
-  if (patientList.filter((e) => e.email === email).length > 0) {
-    //add the exercise info to the user's array
-    await db
-      .collection("patient")
-      .updateOne(
-        { email: email },
-        { $push: { exerciseInfo: { ...cart, exerciseId } } }
-      );
-
-    res.status(200).json({ status: 200, data: exerciseId });
-  } else {
-    res.status(500).json({ status: 500, error: err.message });
-  }
   try {
-    //if it's a new user we simple create the new document in Mongo
+    const exerciseId = uuidv4();
     const _id = uuidv4();
-    const newEntry = await db.collection("patient").insertOne({
-      _id: _id,
-      ...req.body,
-      exerciseInfo: [{ ...exercises }],
-    });
-    res.status(200).json({ status: 200, data: newEntry.insertedId });
+    const newEntry = await db
+      .collection("patient")
+      .insertOne({ _id: _id, exerciseId: exerciseId, ...req.body });
+    //if it's a new user we simple create the new document in Mongo
+    res.status(200).json({ status: 200, data: req.body });
   } catch (err) {
     console.log(err.stack);
     res.status(500).json({ status: 500, error: err.message });
+  } finally {
     await client.close();
+    console.log("disconnected");
   }
 };
 

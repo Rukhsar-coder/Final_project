@@ -8,7 +8,7 @@ import { ExerciseContext } from "./ExerciseContext";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-const SignUp = ({ handleClose }) => {
+const SignUp = () => {
   const history = useHistory();
 
   // consume context
@@ -17,19 +17,24 @@ const SignUp = ({ handleClose }) => {
   // fetch is initiated with the signin submit button
   const handleSignin = (ev) => {
     ev.preventDefault();
-    fetch("/api/users", {
+    fetch("/api/add-new-patient", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ name: firstName }),
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.name);
-        window.sessionStorage.setItem("name", `${data.data.name}`);
+        console.log(data.data.firstName);
+        window.sessionStorage.setItem("email", `${data.data.email}`);
         setUser(data.data);
+        console.log(data);
         history.push("/");
       })
       .catch((err) => history.push("/errorpage"));
@@ -42,20 +47,9 @@ const SignUp = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(firstName, lastName, email, password);
-    handleClose();
-  };
   return (
     // <form className={classes.root} onSubmit={handleSubmit}>
-    <FormContainer
-      className={classes.root}
-      onSubmit={(handleSubmit, handleSignin)}
-    >
-      {/* <img src={SignUpImg} alt="Background "></img> */}
-      {/* <div style="background-image: url('SignUpImg.jpg');"></div> */}
-
+    <FormContainer className={classes.root} onSubmit={(e) => handleSignin(e)}>
       <TextField
         label="First Name"
         variant="filled"
@@ -86,8 +80,12 @@ const SignUp = ({ handleClose }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      {/* <SelectOption>
+        <option value="Patient">Patient</option>
+        <option value="Physio">Physio</option>
+      </SelectOption> */}
       <div>
-        <Button variant="contained" onClick={handleClose}>
+        <Button type="reset " variant="contained">
           Cancel
         </Button>
         <Button type="submit" variant="contained" color="primary">
@@ -98,6 +96,8 @@ const SignUp = ({ handleClose }) => {
   );
 };
 
+// const SelectOption = styled.from``;
+// const Option = styled.Option``
 const FormContainer = styled.form`
   background: rgb(2, 0, 36);
   background: linear-gradient(
@@ -113,19 +113,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px",
+    padding: "100px",
     background: "none",
 
     "& .MuiTextField-root": {
-      padding: "20px",
+      padding: "35px",
       background: "none",
-      width: "300px",
+      width: "500px",
     },
     "& .MuiInputBase-input": {
       background: "#FDFEFE",
     },
     "& .MuiButtonBase-root": {
-      margin: theme.spacing(2),
+      margin: theme.spacing(4),
     },
   },
 }));

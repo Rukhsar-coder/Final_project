@@ -167,8 +167,8 @@ const Para8 = styled.span`
   // color: #9966ff;
 `;
 const Para9 = styled.span`
-  top: 840px;
-  margin-left: -990px;
+  top: 950px;
+  margin-left: -1200px;
   font-size: 20px;
   position: absolute;
   // color: #9966ff;
