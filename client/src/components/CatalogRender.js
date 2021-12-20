@@ -42,7 +42,7 @@ const CatalogRender = () => {
   if (!state.hasLoaded) {
     return (
       <Wrapper>
-        <Spinner />
+        <Spinner size="10rem" />
       </Wrapper>
     );
   } else {

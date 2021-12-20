@@ -12,18 +12,18 @@ const options = {
 const { v4: uuidv4 } = require("uuid");
 
 //>>>>>>>>>>>----- addAllExerciseToCart ------>>>>>>>>>>>>>>>>>>>>>
-const getAllExerciseFromCart = async (req, res) => {
+const getPatientFormCartByEmail = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
-  const AllCartExercises = req.body;
-  console.log(AllCartExercises);
+  const email = req.params.email;
+  console.log(email);
 
   try {
     await client.connect();
     console.log("You are connected!");
 
-    const addAllExercise = await db.collection("cart").find().toArray();
-    console.log(AllCartExercises);
+    const addAllExercise = await db.collection("cart").findOne(email);
+    console.log(addAllExercise);
     if (addAllExercise) {
       return res.status(200).json({
         status: 200,
@@ -44,4 +44,4 @@ const getAllExerciseFromCart = async (req, res) => {
 };
 // getAllBodyParts();
 
-module.exports = { getAllExerciseFromCart };
+module.exports = { getPatientFormCartByEmail };

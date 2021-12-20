@@ -12,8 +12,8 @@ const { getTargetMuscle } = require("./Endpoints/getTargetMuscle");
 const { getOrder } = require("./Endpoints/getOrder");
 const { addToCart } = require("./Endpoints/addToCart");
 const {
-  getAllExerciseFromCart,
-} = require("./Endpoints/getAllExerciseFromCart");
+  getPatientFormCartByEmail,
+} = require("./Endpoints/getPatientFormCartByEmail");
 const { addAllExerciseToCart } = require("./Endpoints/addAllExerciseToCart");
 const { addPatientSignup } = require("./Endpoints/addPatientSignup");
 const { getAllListOfPatient } = require("./Endpoints/getAllListOfPatient");
@@ -67,8 +67,8 @@ app.post("/api/physio/addPhysio", addPhysioSignup);
 //---------add a all  exercise to DB--------------
 app.post("/api/add-all-Exercise/cart", addAllExerciseToCart);
 
-//-------- GET a all  exercise form DB cart--------------
-app.get("/api/get-all-Exercise/cart", getAllExerciseFromCart);
+//-------- GET a all Patient-Form exercise and data from Cart By Email form DB cart--------------
+app.get("/api/get-all-Exercise/cart", getPatientFormCartByEmail);
 //-------- GET a all  patient form DB cart--------------
 app.get("/api/get-all-patient/cart", getAllListOfPatient);
 

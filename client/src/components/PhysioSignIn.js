@@ -12,8 +12,11 @@ const PhysioSignIn = ({ _id }) => {
 
   // consume context
   const { setPhysio } = useContext(ExerciseContext);
-  const [status, setStatus] = useState("loading");
-  const userToAdd = { user: _id };
+  // const [status, setStatus] = useState("loading");
+
+  const [email, setEmail] = useState("");
+  const [physiotherapist, setPhysiotherapist] = useState(false);
+  // const userToAdd = { user: _id };
 
   const handleSignin = (ev) => {
     ev.preventDefault();
@@ -23,29 +26,36 @@ const PhysioSignIn = ({ _id }) => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ userToAdd }),
+      body: JSON.stringify({
+        email,
+        physiotherapist,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data);
+        window.sessionStorage.setItem(
+          "Sign-in",
+          JSON.stringify({ email, physiotherapist })
+        );
         setPhysio(data.data);
         console.log(data);
-        setStatus("idle");
+        // setStatus("idle");
         history.push("/");
       })
       .catch((err) => history.push("/errorpage"));
   };
 
   // if (status === "loading") {
-  //   return <Spinner />;
+  //   return <Spinner  size="10rem"/>;
   // }
 
-  const handleChange = (ev) => {
-    ev.preventDefault();
-    // const { name, value } = ev.target;
+  // const handleChange = (ev) => {
+  //   ev.preventDefault();
+  //   // const { name, value } = ev.target;
 
-    // setState({ [name]: value });
-  };
+  //   // setState({ [name]: value });
+  // };
   return (
     <MainContainer>
       <Wrapper>
@@ -57,6 +67,8 @@ const PhysioSignIn = ({ _id }) => {
               type="email"
               id="email"
               placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             ></Input>
           </Label>
@@ -66,6 +78,8 @@ const PhysioSignIn = ({ _id }) => {
               type="password"
               id="password"
               placeholder="passworde"
+              // value={password}
+              // onChange={(e) => setpassword(e.target.value)}
               required
             ></Input>
           </Label>
@@ -75,8 +89,8 @@ const PhysioSignIn = ({ _id }) => {
               Patient
               <Input
                 type="radio"
-                onChange={(e) => handleChange(e)}
                 name="type"
+                value={false}
                 // required
               />
             </Label>
@@ -84,8 +98,9 @@ const PhysioSignIn = ({ _id }) => {
               Physiotherapist
               <Input
                 type="radio"
-                onChange={(e) => handleChange(e)}
                 name="type"
+                value={true}
+                onChange={(e) => setPhysiotherapist(e.target.value)}
                 // required
               />
             </Label>
@@ -112,7 +127,7 @@ const Input = styled.input`
   border: 0;
   height: 20px;
   padding: 10px;
-  font-size: 15px;
+  font-size: 20px;
   border-radius: 5px;
 `;
 
@@ -131,6 +146,8 @@ const Title = styled.h1`
 
 const Form = styled.form`
   display: flex;
+  font-family: var(--font-family);
+  font-size: 20px;
   flex-direction: column;
   align-content: flex-end;
   justify-content: center;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import About from "./Images/About.jpeg";
 
 // import Footer from "./Footer";
-import { Container } from "@material-ui/core";
 
 const AboutUS = () => {
   return (

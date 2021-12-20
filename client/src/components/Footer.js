@@ -21,7 +21,7 @@ const Footer = () => {
           <BsReddit size={32} />
           <SiTiktok size={32} />
         </SocialContainer>
-        <AboutUs to={"/about"}>About Us</AboutUs>
+        <HomePage to={"/"}>Home</HomePage>
         <LogoutButton />
         <Scroll>
           <ScrollToTop />
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   font-size: 30px;
 `;
 
-const AboutUs = styled(NavLink)`
+const HomePage = styled(NavLink)`
   text-decoration: none;
   color: white;
   &:hover {

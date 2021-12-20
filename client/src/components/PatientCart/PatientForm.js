@@ -18,15 +18,24 @@ const PatientForm = () => {
   const [page, setPage] = useState(1);
   const [start, setStart] = useState(0);
   const [stop, setStop] = useState(20);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState("");
+  const [physiotherapistName, setPhysiotherapistName] = useState("");
+  const [note, setNote] = useState("");
+  const [url, setUrl] = useState("");
+  const [patientExercise, setPatientExercise] = useState([]);
 
+  console.log(patientExercise);
   const history = useHistory();
 
   // consume context
   const { setUser } = useContext(ExerciseContext);
   // verify the user is a user with fetch
   // fetch is initiated with the signin submit button
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetch("/api/add-all-Exercise/cart", {
       method: "POST",
       headers: {
@@ -34,14 +43,19 @@ const PatientForm = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        // firstName: firstName,
-        // lastName: lastName,
-        // email: email,
+        firstName,
+        lastName,
+        email,
+        licenseNumber,
+        physiotherapistName,
+        note,
+        url,
+        patientExercise,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data.firstName);
+        // console.log(data.data);
         window.sessionStorage.setItem("email", `${data.data.email}`);
         setUser(data.data);
         console.log(data);
@@ -62,7 +76,7 @@ const PatientForm = () => {
   }, []);
 
   if (status === "loading") {
-    return <Spinner />;
+    return <Spinner size="10rem" />;
   }
 
   const increasePage = () => {
@@ -88,7 +102,8 @@ const PatientForm = () => {
             First Name:
             <Input
               type="text"
-              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
               required
             ></Input>
@@ -97,7 +112,8 @@ const PatientForm = () => {
             Last Name:
             <Input
               type="text"
-              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
               required
             ></Input>
@@ -106,7 +122,8 @@ const PatientForm = () => {
             Physio License Number:
             <Input
               type="Num"
-              id="Num"
+              value={licenseNumber}
+              onChange={(e) => setLicenseNumber(e.target.value)}
               placeholder="License Number"
               required
             ></Input>
@@ -115,7 +132,8 @@ const PatientForm = () => {
             Physiotherapist Name:
             <Input
               type="text"
-              id="Physiotherapist"
+              value={physiotherapistName}
+              onChange={(e) => setPhysiotherapistName(e.target.value)}
               placeholder="Assign by"
               required
             ></Input>
@@ -124,7 +142,8 @@ const PatientForm = () => {
             email:
             <Input
               type="email"
-              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Last Name"
               required
             ></Input>
@@ -133,14 +152,20 @@ const PatientForm = () => {
             Note:
             <Input
               type="TextArea"
-              id="TextArea"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
               placeholder="TextArea"
               required
             ></Input>
           </Label>
           <Label>
             URL:
-            <Input type="URL" id="URL" placeholder="URL"></Input>
+            <Input
+              type="URL"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="URL"
+            ></Input>
           </Label>
           <ConfirmSubmit>
             <Submit type="submit">Submit</Submit>
@@ -154,11 +179,7 @@ const PatientForm = () => {
             {allExercise.slice(start, stop).map((exercise) => {
               // console.log(exercise);
               return (
-                <AllExercise
-                  to={`/api/exerciseinfo/${_id}`}
-                  key={exercise._id}
-                  exercise={exercise}
-                >
+                <AllExercise to={`/api/exerciseinfo/${_id}`} key={exercise._id}>
                   <DataContainer>
                     <ExerciseName> {exercise.name}</ExerciseName>
                     {/* <ExerciseEquipment>{exercise.equipment}</ExerciseEquipment>
@@ -168,7 +189,11 @@ const PatientForm = () => {
                   <ImgContainer>
                     <GifUrl src={exercise.gifUrl}></GifUrl>
                   </ImgContainer>
-                  <AddToCartButton _id={exercise._id} />
+                  <AddToCartButton
+                    patientExercise={patientExercise}
+                    exercise={exercise}
+                    setPatientExercise={setPatientExercise}
+                  />
                 </AllExercise>
               );
             })}
@@ -199,7 +224,7 @@ const Input = styled.input`
   border: 0;
   height: 20px;
   padding: 10px;
-  font-size: 15px;
+  font-size: 20px;
   border-radius: 5px;
 `;
 
@@ -218,10 +243,11 @@ const Title = styled.h1`
 
 const Form = styled.form`
   display: flex;
+  font-family: var(--font-family);
+  font-size: 20px;
   flex-direction: column;
   align-content: flex-end;
   justify-content: center;
-  flex-direction: column;
   align-items: flex-end;
   margin-right: 800px;
 `;
@@ -303,15 +329,6 @@ const ImgContainer = styled.div``;
 const ExerciseName = styled.div`
   font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
 `;
-// const ExerciseBodyPart = styled.div`
-//   text-align: center;
-// `;
-// const Target = styled.div`
-//   text-align: center;
-// `;
-// const ExerciseEquipment = styled.div`
-//   text-align: center;
-// `;
 const GifUrl = styled.img`
   width: 200px;
   margin: 40px;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-// import Image1 from "./Images/Image1.png";
+import Image1 from "./Images/Image1.png";
 import Call from "./Images/Call.png";
 import Email from "./Images/Email.png";
 import Online from "./Images/Online.png";
@@ -11,10 +11,10 @@ const BookAppointment = () => {
     <Div>
       <Wrapper>
         <Para1>IT'S TIME TO REHAB SMARTER</Para1>
-        {/* <BackgroundImg1
+        <BackgroundImg1
           src={Image1}
           alt="Appintment Background Image"
-        ></BackgroundImg1> */}
+        ></BackgroundImg1>
 
         <BackgroundImg
           src={SignUpImg}
@@ -47,14 +47,16 @@ const BackgroundImg = styled.img`
     width: 10vh
     height: 10px;
     display: flex;
+    
 `;
-// const BackgroundImg1 = styled.img`
-//     width: 10vh
-//     height: 10px;
-//     display: flex;
-//   position: absolute;
-// background: #111111;
-//     `;
+const BackgroundImg1 = styled.img`
+    width: 10vh
+    height: 10px;
+    margin-left: 1200px;    
+    margin-top: 110px;
+    display: flex;
+  position: absolute;
+    `;
 const Para1 = styled.span`
   top: -20px;
   position: absolute;

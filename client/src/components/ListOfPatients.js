@@ -25,7 +25,7 @@ const ListOfPatients = () => {
   }, []);
 
   if (status === "loading") {
-    return <Spinner />;
+    return <Spinner size="10rem" />;
   }
 
   const increasePage = () => {
@@ -55,9 +55,16 @@ const ListOfPatients = () => {
                 patient={patient}
               >
                 <DataContainer>
-                  <PatientName> {patient.firstName}</PatientName>
-                  <PatientName> {patient.lastName}</PatientName>
-                  <PatientEmail>{patient.email}</PatientEmail>
+                  <PatientName>
+                    <Value>Patient FirstName:</Value> {patient.firstName}
+                  </PatientName>
+                  <PatientName>
+                    <Value>Patient LastName:</Value> {patient.lastName}
+                  </PatientName>
+                  <PatientEmail>
+                    <Value>Patient Email:</Value>
+                    {patient.email}
+                  </PatientEmail>
                 </DataContainer>
               </AllPatient>
             );
@@ -87,9 +94,16 @@ const ButtonContainer = styled.div`
   background: white;
   font-size: 90px;
 `;
+const Value = styled.span`
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 0px;
+
+  font-family: "roboto", sans-serif;
+`;
 const PageNumber = styled.span`
   padding: 20px;
-  font-size: 25px;
+  font-size: 20px;
   front-weight: 1200;
 `;
 const PageButton = styled.button``;
@@ -97,12 +111,12 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   font-family: "roboto", sans-serif;
 `;
 const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   margin-top: 30px;
   position: relative;
@@ -110,11 +124,9 @@ const Wrapper = styled.div`
 const AllPatient = styled(Link)`
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 400px;
-  padding: 50px;
-  font-size: 25px;
-  font-weight: 600;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 400;
   position: relative;
   border-radius: 20px;
   text-decoration: none;

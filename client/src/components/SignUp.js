@@ -15,6 +15,13 @@ const SignUp = () => {
   const { setUser } = useContext(ExerciseContext);
   // verify the user is a user with fetch
   // fetch is initiated with the signin submit button
+  const classes = useStyles();
+  // create state variables for each input
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSignin = (ev) => {
     ev.preventDefault();
     fetch("/api/add-new-patient", {
@@ -39,13 +46,6 @@ const SignUp = () => {
       })
       .catch((err) => history.push("/errorpage"));
   };
-
-  const classes = useStyles();
-  // create state variables for each input
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
     // <form className={classes.root} onSubmit={handleSubmit}>
@@ -96,7 +96,7 @@ const SignUp = () => {
   );
 };
 
-// const SelectOption = styled.from``;
+// const SelectOption = styled.div``;
 // const Option = styled.Option``
 const FormContainer = styled.form`
   background: rgb(2, 0, 36);

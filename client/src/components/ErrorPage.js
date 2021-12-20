@@ -5,7 +5,7 @@ import { FaBomb } from "react-icons/fa";
 const ErrorPage = ({ error }) => {
   return (
     <ErrorBoxContainer>
-      <FaBomb size={50} />
+      <FaBomb size={100} />
       <ErrorMessage>{error}</ErrorMessage>
       <ErrorInstruction>
         Please try refreshing the page, or <a href="/">contact support</a> if
@@ -30,11 +30,13 @@ const ErrorBoxContainer = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  font-size: 30px;
+  font-size: 80px;
   font-weight: bold;
   margin: 30px 0;
 `;
 
-const ErrorInstruction = styled.div``;
+const ErrorInstruction = styled.div`
+  font-size: 40px;
+`;
 
 export default ErrorPage;

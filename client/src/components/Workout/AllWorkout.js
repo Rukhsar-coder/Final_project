@@ -4,18 +4,9 @@ import { useEffect, useState } from "react";
 import { BiPlusMedical } from "react-icons/bi";
 import { ImMinus } from "react-icons/im";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import Pagination from "../Pagination/Pagination";
-// import { ExerciseContext } from "../ExerciseContext";
 import Spinner from "../Spinner";
-// import { useParams } from "react-router-dom";
 
 const AllWorkout = () => {
-  // const history = useHistory();
-  // const { _id } = useParams();
-  // console.log(id);
-  //set Variable
-
   const [status, setStatus] = useState("loading");
   const [allExercise, setAllExercise] = useState(null);
   const [page, setPage] = useState(1);
@@ -34,7 +25,7 @@ const AllWorkout = () => {
   }, []);
 
   if (status === "loading") {
-    return <Spinner />;
+    return <Spinner size="10rem" />;
   }
 
   const increasePage = () => {
@@ -65,7 +56,11 @@ const AllWorkout = () => {
                 exercise={exercise}
               >
                 <DataContainer>
-                  <ExerciseName> {exercise.name}</ExerciseName>
+                  <ExerciseName>
+                    {" "}
+                    <Value>Exersice Name: </Value>
+                    {exercise.name}
+                  </ExerciseName>
                   {/* <ExerciseEquipment>{exercise.equipment}</ExerciseEquipment>
                   <ExerciseBodyPart>{exercise.bodyPart}</ExerciseBodyPart>
                   <Target>{exercise.target}</Target> */}
@@ -104,6 +99,10 @@ const ButtonContainer = styled.div`
 const PageNumber = styled.span`
   padding: 20px;
   font-size: 25px;
+  front-weight: 700;
+`;
+const Value = styled.div`
+  font-size: 25px;
   front-weight: 1200;
 `;
 const PageButton = styled.button``;
@@ -127,7 +126,7 @@ const AllExercise = styled(Link)`
   width: 400px;
   height: 400px;
   padding: 50px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   position: relative;
   border-radius: 20px;

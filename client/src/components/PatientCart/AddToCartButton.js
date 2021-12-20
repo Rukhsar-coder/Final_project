@@ -2,29 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 // import GrDocumentText from "react-icons/gr";
 
-const AddToCartButton = ({ _id }) => {
+const AddToCartButton = ({ exercise, patientExercise, setPatientExercise }) => {
   const [exerciseInCart, setExerciseInCart] = useState(false);
 
-  const addToCartHandler = (event) => {
-    event.preventDefault();
-    const exerciseToAdd = { exercise: _id };
+  const addToCartHandler = (e) => {
+    e.preventDefault();
 
-    fetch(`/api/cart/addExercise`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(exerciseToAdd),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.status === 200) {
-          setExerciseInCart(true);
-        }
-        console.log(res);
-        console.log(exerciseToAdd);
-      });
+    console.log(exercise);
+    const exerciseArray = [...patientExercise];
+    exerciseArray.push(exercise);
+    setPatientExercise(exerciseArray);
   };
 
   return (

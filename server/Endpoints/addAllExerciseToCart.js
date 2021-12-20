@@ -23,7 +23,7 @@ const addAllExerciseToCart = async (req, res) => {
     console.log("You are connected!");
 
     const addOneExercise = await db.collection("cart").insertOne(CartExercises);
-    console.log(CartExercises);
+
     if (addOneExercise) {
       return res.status(200).json({
         status: 200,
