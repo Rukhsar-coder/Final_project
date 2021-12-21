@@ -4,9 +4,10 @@ export const ExerciseContext = createContext(null);
 
 const initialState = {
   Exercise: [],
-  categoryExercise: [], //yet to get endpoint working
-  searchExercise: [],
+  // categoryExercise: [], //yet to get endpoint working
+  // searchExercise: [],
   cart: [],
+  currentUser: null,
 };
 
 const patientInitialState = {
@@ -19,6 +20,24 @@ const patientInitialState = {
 function reducer(state, action) {
   switch (action.type) {
     //
+    case "loging-out": {
+      return initialState;
+    }
+    case "PHYSIO-DATA-RECEIVED":
+      return {
+        ...state,
+        currentUser: action.data,
+        userType: "physio",
+        status: "idle",
+      };
+    case "PATIENT-DATA-RECEIVED":
+      return {
+        ...state,
+        currentUser: action.data,
+        userType: "patient",
+        status: "idle",
+        error: null,
+      };
     case "receive-exercise-info-from-server": {
       return {
         ...state,
@@ -61,6 +80,12 @@ function reducer(state, action) {
         categoryExercise: action.categoryExercise,
       };
     }
+    case "ERROR":
+      return {
+        ...state,
+        status: "error",
+        error: action.error,
+      };
 
     case "receive-search-exercise-info-from-server": {
       return {
@@ -88,6 +113,10 @@ export const ExerciseProvider = ({ children }) => {
       type: "receive-exercise-info-from-server",
       exercise: [...state.exercise].concat(data),
     });
+  };
+
+  const setLoggedOutState = () => {
+    dispatch({ type: "LOGGED-OUT" });
   };
 
   const receiveCategoryExerciseInfoFromServer = (data) => {
@@ -161,6 +190,10 @@ export const ExerciseProvider = ({ children }) => {
       cart: updateArray,
     });
   };
+  const [userId, setUserId] = useState(() => {
+    const user = sessionStorage.getItem("Sign-in");
+    return user !== null ? JSON.parse(user) : null;
+  });
 
   return (
     <ExerciseContext.Provider
@@ -174,6 +207,8 @@ export const ExerciseProvider = ({ children }) => {
         receiveSearchExerciseInfoFromServer,
         patientInfo,
         setPatientInfo,
+        userId,
+        setUserId,
         user,
         setUser,
         physio,

@@ -11,21 +11,25 @@ import { useState } from "react";
 // import PhysioHeader from "./HeaderContain/PhysioHeader";
 
 const Header = () => {
-  // let signIn = window.sessionStorage.getItem("Sign-in");
-  const [userId, setUserId] = useState();
-
-  let signIn = window.sessionStorage.getItem(
-    "Sign-in",
-    JSON.stringify("signIn")
-  );
+  let signIn = window.sessionStorage.getItem("Sign-in");
+  // let signIn = window.sessionStorage.getItem(
+  //   "Sign-in",
+  //   JSON.stringify("signIn")
+  // );
   console.log(signIn);
 
+  const [userId, setUserId] = useState(() => {
+    const user = sessionStorage.getItem("Sign-in");
+    return user !== null ? JSON.parse(user) : null;
+  });
+
+  console.log(userId);
+  console.log(userId.physiotherapist);
   // {"email":"vezypijo@mailinator.com","physiotherapist":"true"}
   // ? window.sessionStorage.getItem("Sign-in")
   // : null;
 
-  if (signIn && signIn.physiotherapist === false) {
-  }
+  // if (userId.physiotherapist === false) {
   return (
     <>
       <Wrapper>
@@ -34,32 +38,109 @@ const Header = () => {
             <LogoStyledLink to="/">
               <BrandName src={Logo} alt="Logo"></BrandName>
             </LogoStyledLink>
-            <LinkItem>
-              <StyledLink to="/">HOME</StyledLink>
-            </LinkItem>
-            <LinkItem>
-              <StyledLink to="/about">ABOUT </StyledLink>
-            </LinkItem>
-            <LinkItem>
-              <StyledLink to="/workout ">WORKOUTS</StyledLink>
-            </LinkItem>
-            <LinkItem>
-              <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-            </LinkItem>
-            <NavBtn>
-              <LinkItem>
-                <SignUpButton to="/signup">SIGNUP</SignUpButton>
-              </LinkItem>
-              <LinkItem>
-                <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
-              </LinkItem>
-            </NavBtn>
+            {userId?.physiotherapist === "true" ? (
+              <>
+                <LinkItem>
+                  <StyledLink to="/">HOME</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/about">ABOUT </StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/workout ">WORKOUTS</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/patientform">FORM</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/Patients-List">PATIENTS</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+                </LinkItem>
+
+                <NavBtn>
+                  <LinkItem>
+                    <SignUpButton to="/signup">SIGNUP</SignUpButton>
+                  </LinkItem>
+                  <LinkItem>
+                    <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+                  </LinkItem>
+                </NavBtn>
+              </>
+            ) : (
+              <>
+                <LinkItem>
+                  <StyledLink to="/">HOME</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/about">ABOUT </StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/workout ">WORKOUTS</StyledLink>
+                </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+                </LinkItem>
+                <NavBtn>
+                  <LinkItem>
+                    <SignUpButton to="/signup">SIGNUP</SignUpButton>
+                  </LinkItem>
+                  <LinkItem>
+                    <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+                  </LinkItem>
+                </NavBtn>
+              </>
+            )}
           </NavContainer>
         </LinksContainer>
       </Wrapper>
     </>
   );
+  // } else {
+  //   return (
+  //     <>
+  //       <PatientHeader>
+  //         <Wrapper>
+  //           <LinksContainer>
+  //             <NavContainer>
+  //               <LogoStyledLink to="/">
+  //                 <BrandName src={Logo} alt="Logo"></BrandName>
+  //               </LogoStyledLink>
+  //               <LinkItem>
+  //                 <StyledLink to="/">HOME</StyledLink>
+  //               </LinkItem>
+  //               <LinkItem>
+  //                 <StyledLink to="/about">ABOUT </StyledLink>
+  //               </LinkItem>
+  //               <LinkItem>
+  //                 <StyledLink to="/workout ">WORKOUTS</StyledLink>
+  //               </LinkItem>
+  //               <LinkItem>
+  //                 <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+  //               </LinkItem>
+  //               <LinkItem>
+  //                 <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+  //               </LinkItem>
+  //               <NavBtn>
+  //                 <LinkItem>
+  //                   <SignUpButton to="/signup">SIGNUP</SignUpButton>
+  //                 </LinkItem>
+  //                 <LinkItem>
+  //                   <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+  //                 </LinkItem>
+  //               </NavBtn>
+  //             </NavContainer>
+  //           </LinksContainer>
+  //         </Wrapper>
+  //       </PatientHeader>
+  //     </>
+  //   );
 };
+// };
 
 const Wrapper = styled.header`
   background: white;
@@ -143,7 +224,6 @@ const StyledLink = styled(Link)`
     transform: scale(1.05);
   }
 `;
-export default Header;
 
 const SignUpButton = styled(NavLink)`
   font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
@@ -176,3 +256,5 @@ const SignUpButton = styled(NavLink)`
     transform: scale(1.15);
   }
 `;
+const PatientHeader = styled.div``;
+export default Header;
