@@ -81,7 +81,7 @@ const App = () => {
             <Route path="/searcherror">
               <Search />
             </Route>
-            <Route path="/confirmation">
+            <Route path="/confirmation/:email">
               <ConfirmationPage />
             </Route>
           </Switch>

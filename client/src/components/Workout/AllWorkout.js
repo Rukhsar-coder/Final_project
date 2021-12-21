@@ -57,7 +57,6 @@ const AllWorkout = () => {
               >
                 <DataContainer>
                   <ExerciseName>
-                    {" "}
                     <Value>Exersice Name: </Value>
                     {exercise.name}
                   </ExerciseName>

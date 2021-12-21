@@ -3,137 +3,62 @@ import styled from "styled-components";
 // import { Link } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Images/Logo.png";
+import { useState } from "react";
+// import PatientHeader from "./HeaderContain/PatientHeader";
+// import PhysioHeader from "./HeaderContain/PhysioHeader";
 // import PersonIcon from "@material-ui/icons/Person";
+// import PatientHeader from "./HeaderContain/PatientHeader";
+// import PhysioHeader from "./HeaderContain/PhysioHeader";
 
 const Header = () => {
-  //want to put condition if the user.type===patient then
-  //only confirmation page will appear with rest of the teb
+  // let signIn = window.sessionStorage.getItem("Sign-in");
+  const [userId, setUserId] = useState();
 
-  //and if the user.type ==== physician then confirmation
-  //patinet form and patint list will appear
+  let signIn = window.sessionStorage.getItem(
+    "Sign-in",
+    JSON.stringify("signIn")
+  );
+  console.log(signIn);
 
-  let signIn = window.sessionStorage.getItem("Sign-in")
-    ? window.sessionStorage.getItem("Sign-in")
-    : null;
+  // {"email":"vezypijo@mailinator.com","physiotherapist":"true"}
+  // ? window.sessionStorage.getItem("Sign-in")
+  // : null;
 
-  if (signIn && signIn.physiotherapist === "true") {
-    return (
-      <>
-        <Wrapper>
-          <LinksContainer>
-            <NavContainer>
-              <LogoStyledLink to="/">
-                <BrandName src={Logo} alt="Logo"></BrandName>
-              </LogoStyledLink>
-              <LinkItem>
-                <StyledLink to="/">HOME</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/about">ABOUT </StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/workout ">WORKOUTS</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-              </LinkItem>
-
-              <LinkItem>
-                <StyledLink to="/patientform">FORM</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/Patients-List">PATIENTS</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
-              </LinkItem>
-
-              <NavBtn>
-                <LinkItem>
-                  <SignUpButton to="/signup">SIGNUP</SignUpButton>
-                </LinkItem>
-                <LinkItem>
-                  <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
-                </LinkItem>
-              </NavBtn>
-            </NavContainer>
-          </LinksContainer>
-        </Wrapper>
-      </>
-    );
-  } else if (signIn && signIn.physiotherapist === "false") {
-    return (
-      <>
-        <Wrapper>
-          <LinksContainer>
-            <NavContainer>
-              <LogoStyledLink to="/">
-                <BrandName src={Logo} alt="Logo"></BrandName>
-              </LogoStyledLink>
-              <LinkItem>
-                <StyledLink to="/">HOME</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/about">ABOUT </StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/workout ">WORKOUTS</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-              </LinkItem>
-
-              <LinkItem>
-                <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
-              </LinkItem>
-              <NavBtn>
-                <LinkItem>
-                  <SignUpButton to="/signup">SIGNUP</SignUpButton>
-                </LinkItem>
-                <LinkItem>
-                  <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
-                </LinkItem>
-              </NavBtn>
-            </NavContainer>
-          </LinksContainer>
-        </Wrapper>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Wrapper>
-          <LinksContainer>
-            <NavContainer>
-              <LogoStyledLink to="/">
-                <BrandName src={Logo} alt="Logo"></BrandName>
-              </LogoStyledLink>
-              <LinkItem>
-                <StyledLink to="/">HOME</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/about">ABOUT </StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/workout ">WORKOUTS</StyledLink>
-              </LinkItem>
-              <LinkItem>
-                <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-              </LinkItem>
-              <NavBtn>
-                <LinkItem>
-                  <SignUpButton to="/signup">SIGNUP</SignUpButton>
-                </LinkItem>
-                <LinkItem>
-                  <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
-                </LinkItem>
-              </NavBtn>
-            </NavContainer>
-          </LinksContainer>
-        </Wrapper>
-      </>
-    );
+  if (signIn && signIn.physiotherapist === false) {
   }
+  return (
+    <>
+      <Wrapper>
+        <LinksContainer>
+          <NavContainer>
+            <LogoStyledLink to="/">
+              <BrandName src={Logo} alt="Logo"></BrandName>
+            </LogoStyledLink>
+            <LinkItem>
+              <StyledLink to="/">HOME</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/about">ABOUT </StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/workout ">WORKOUTS</StyledLink>
+            </LinkItem>
+            <LinkItem>
+              <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+            </LinkItem>
+            <NavBtn>
+              <LinkItem>
+                <SignUpButton to="/signup">SIGNUP</SignUpButton>
+              </LinkItem>
+              <LinkItem>
+                <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+              </LinkItem>
+            </NavBtn>
+          </NavContainer>
+        </LinksContainer>
+      </Wrapper>
+    </>
+  );
 };
 
 const Wrapper = styled.header`

@@ -19,6 +19,7 @@ const { addPatientSignup } = require("./Endpoints/addPatientSignup");
 const { getAllListOfPatient } = require("./Endpoints/getAllListOfPatient");
 const { addPhysioSignup } = require("./Endpoints/addPhysioSignup");
 const { getSingleUser } = require("./Endpoints/getSingleUser");
+const { getOnePatientCart } = require("./Endpoints/getOnePatientCart");
 //---------------------------------------------
 
 const {
@@ -77,6 +78,9 @@ app.get("/api/searchterm", searchTerm);
 
 //--------- GET find the specific exercise form exercise DB exercise-------------
 app.get("/api/cart-exercise", getExerciseCart);
+
+//--------- GET Single Patient Confirmation exercise-------------
+app.get("/api/patient-exercise-cart/:email", getOnePatientCart);
 
 app.get("*", (req, res) => {
   res.status(404).json({
