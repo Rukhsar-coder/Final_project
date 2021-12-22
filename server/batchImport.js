@@ -48,7 +48,7 @@ const batchImport = async () => {
       console.log("You are Disconnected");
     });
 
-    console.log({ status: 201 });
+    console.log({ status: 200 });
   } catch (err) {
     console.log(err.message);
     console.log({ status: 500, message: err.message });

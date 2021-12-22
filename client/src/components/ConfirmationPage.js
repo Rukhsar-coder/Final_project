@@ -8,15 +8,20 @@ import styled from "styled-components";
 import { format } from "date-fns";
 import Spinner from "./Spinner";
 
-let signIn = window.sessionStorage.getItem("Sign-in");
-
-console.log(signIn);
-
 const ConfirmationPage = () => {
+  let signIn = window.sessionStorage.getItem("Sign-in");
+  const [userId, setUserId] = useState(() => {
+    const user = sessionStorage.getItem("Sign-in");
+    return user !== null ? JSON.parse(user) : null;
+  });
+  console.log(userId);
+  console.log(signIn);
+
+  //
   const { email } = useParams();
   console.log(useParams);
-
   console.log(email);
+
   const [allExercise, setAllExercise] = useState(null);
   const [status, setStatus] = useState("loading");
 

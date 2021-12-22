@@ -17,10 +17,12 @@ const PhysioSignIn = ({ _id }) => {
 
   const [email, setEmail] = useState("");
   const [physiotherapist, setPhysiotherapist] = useState(false);
+
   // const userToAdd = { user: _id };
 
   const handleSignin = (ev) => {
     ev.preventDefault();
+    console.log(physiotherapist);
     fetch("/api/physio/addPhysio", {
       method: "POST",
       headers: {
@@ -84,7 +86,12 @@ const PhysioSignIn = ({ _id }) => {
                 type="radio"
                 name="type"
                 value={false}
-                // required
+                onChange={(e) => {
+                  if (e.target.checked === true) {
+                    console.log(e.target.checked);
+                    setPhysiotherapist(false);
+                  }
+                }}
               />
             </Label>
             <Label htmlFor="type">
@@ -92,8 +99,14 @@ const PhysioSignIn = ({ _id }) => {
               <Input
                 type="radio"
                 name="type"
-                value={true}
-                onChange={(e) => setPhysiotherapist(e.target.value)}
+                value={physiotherapist}
+                onChange={(e) => {
+                  if (e.target.checked === true) {
+                    console.log(e.target.checked);
+                    setPhysiotherapist(true);
+                  }
+                }}
+
                 // required
               />
             </Label>
@@ -112,7 +125,6 @@ const PhysioSignIn = ({ _id }) => {
 const RadioButton = styled.div`
   display: flex;
   flex-direction: column;
-
   text-align: center;
 `;
 const ConfirmSubmit = styled.div``;

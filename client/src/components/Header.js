@@ -14,15 +14,17 @@ const Header = () => {
 
   const [userId, setUserId] = useState(() => {
     const user = sessionStorage.getItem("Sign-in");
+    console.log(typeof user);
     return user !== null ? JSON.parse(user) : null;
   });
   console.log(userId);
-  console.log(userId.physiotherapist);
+  // console.log(userId.physiotherapist);
 
   const handleLogout = () => {
-    sessionStorage.setItem("Sign-in");
-    setUserId(userId.email === "", userId.physiotherapist === false);
+    sessionStorage.removeItem("Sign-in");
+    setUserId(null);
     history.push("/");
+    console.log(userId);
   };
 
   // console.log(userId.physiotherapist);
@@ -35,7 +37,7 @@ const Header = () => {
             <LogoStyledLink to="/">
               <BrandName src={Logo} alt="Logo"></BrandName>
             </LogoStyledLink>
-            {userId?.physiotherapist === "true" ? (
+            {userId?.physiotherapist === true ? (
               <>
                 <LinkItem>
                   <StyledLink to="/">HOME</StyledLink>
@@ -60,13 +62,13 @@ const Header = () => {
                 </LinkItem>
                 <NavBtn>
                   <LinkItem>
-                    <SignUpButton to="/PhysioSignIn" onClick={handleLogout}>
+                    <SignUpButton to="/" onClick={handleLogout}>
                       LogOut
                     </SignUpButton>
                   </LinkItem>
                 </NavBtn>
               </>
-            ) : (
+            ) : userId?.physiotherapist === false ? (
               <>
                 <LinkItem>
                   <StyledLink to="/">HOME</StyledLink>
@@ -80,15 +82,42 @@ const Header = () => {
                 <LinkItem>
                   <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
                 </LinkItem>
+                <LinkItem>
+                  <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+                </LinkItem>
                 <NavBtn>
                   <LinkItem>
-                    <SignUpButton to="/signup">SIGNUP</SignUpButton>
-                  </LinkItem>
-                  <LinkItem>
-                    <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+                    <SignUpButton to="/" onClick={handleLogout}>
+                      LogOut
+                    </SignUpButton>
                   </LinkItem>
                 </NavBtn>
               </>
+            ) : (
+              userId === null && (
+                <>
+                  <LinkItem>
+                    <StyledLink to="/">HOME</StyledLink>
+                  </LinkItem>
+                  <LinkItem>
+                    <StyledLink to="/about">ABOUT </StyledLink>
+                  </LinkItem>
+                  <LinkItem>
+                    <StyledLink to="/workout ">WORKOUTS</StyledLink>
+                  </LinkItem>
+                  <LinkItem>
+                    <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
+                  </LinkItem>
+                  <NavBtn>
+                    <LinkItem>
+                      <SignUpButton to="/signup">SIGNUP</SignUpButton>
+                    </LinkItem>
+                    <LinkItem>
+                      <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+                    </LinkItem>
+                  </NavBtn>
+                </>
+              )
             )}
           </NavContainer>
         </LinksContainer>
