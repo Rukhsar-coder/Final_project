@@ -13,18 +13,15 @@ const getAllBodyParts = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
   const bodyPart = req.params.bodyPart;
-  console.log(bodyPart);
 
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const exerciseBybodyPart = await db
       .collection("Exercise")
       .find({ bodyPart: bodyPart })
       .toArray();
 
-    console.log(bodyPart);
     if (exerciseBybodyPart) {
       return res.status(200).json({
         status: 200,

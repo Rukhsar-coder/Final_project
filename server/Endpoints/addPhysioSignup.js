@@ -16,11 +16,9 @@ const addPhysioSignup = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
   const newPhysio = req.body;
-  console.log(newPhysio);
 
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const addOnePhysio = await db.collection("physio").insertOne(newPhysio);
 
@@ -37,7 +35,6 @@ const addPhysioSignup = async (req, res) => {
         .json({ status: 400, message: "Unable to add one new physio" });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });

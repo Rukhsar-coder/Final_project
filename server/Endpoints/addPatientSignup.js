@@ -20,11 +20,9 @@ const addPatientSignup = async (req, res) => {
 
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const addOnePatient = await db.collection("patient").insertOne(newPatient);
 
-    console.log(addOnePatient);
     if (addOnePatient) {
       return res.status(200).json({
         status: 200,
@@ -37,7 +35,6 @@ const addPatientSignup = async (req, res) => {
         .json({ status: 400, message: "Unable to add one new Patient" });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });

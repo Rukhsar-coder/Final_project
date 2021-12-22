@@ -13,7 +13,6 @@ const getOnePatientCart = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
   const email = req.params.email;
-  console.log(email);
 
   try {
     await client.connect();
@@ -23,7 +22,6 @@ const getOnePatientCart = async (req, res) => {
       .collection("cart")
       .findOne({ email: email });
 
-    console.log(patientByEmail);
     if (patientByEmail) {
       return res.status(200).json({
         status: 200,
@@ -37,7 +35,6 @@ const getOnePatientCart = async (req, res) => {
       });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });

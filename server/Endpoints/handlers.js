@@ -16,17 +16,14 @@ const getExerciseByCategory = async (req, res) => {
   const db = client.db("DoctorAcess");
 
   const target = req.params.target;
-  console.log(target);
 
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const exerciseBytarget = await db
       .collection("Exercise")
       .findOne({ target: target });
 
-    console.log(target);
     if (exerciseBytarget) {
       return res.status(200).json({
         status: 200,
@@ -40,7 +37,6 @@ const getExerciseByCategory = async (req, res) => {
       });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });
@@ -55,7 +51,6 @@ const addNewPatient = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const db = client.db("DoctorAcess");
   await client.connect();
-  console.log("connected");
 
   //check to see if user already exists so we add the exercise info to that user instead of creating a new document in the collection
   try {

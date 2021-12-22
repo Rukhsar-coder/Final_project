@@ -15,11 +15,9 @@ const getExerciseInfo = async (req, res) => {
 
   try {
     await client.connect();
-    // console.log("connected!");
     const dbExercise = await db.collection("Exercise").find().toArray();
 
     if (dbExercise) {
-      // return console.log({ status: 201 });
       return res.status(200).json({
         status: 200,
         data: dbExercise,
@@ -31,7 +29,6 @@ const getExerciseInfo = async (req, res) => {
         .json({ status: 400, message: "Unable to retrieve ExerciseInfo" });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });

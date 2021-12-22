@@ -17,20 +17,14 @@ const getExerciseInfo = async () => {
     let parsedResponse;
     const response = await request(options, function (error, response, body) {
       if (error) throw new Error(error);
-      // console.log(body);
       //When receiving data from a web server, the data is always a string.
       // Parse the data with JSON.parse(), and the data becomes a JavaScript object.
       parsedResponse = JSON.parse(body);
-      // console.log(Object.keys(response));
-      // console.log(parsedResponse);
     });
     return parsedResponse;
-    // return response;
   } catch (err) {
     console.log(err);
   }
 };
-
-// getExerciseInfo().then((data) => console.log(data));
 
 module.exports = { getExerciseInfo };

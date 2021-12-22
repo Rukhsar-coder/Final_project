@@ -16,11 +16,9 @@ const getOrder = async (req, res) => {
 
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const orderForPatient = await db.collection("order").findOne({ _id });
 
-    console.log(_id);
     if (orderForPatient) {
       return res.status(200).json({
         status: 200,
@@ -34,12 +32,10 @@ const getOrder = async (req, res) => {
       });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-// getOrder();
 
 module.exports = { getOrder };

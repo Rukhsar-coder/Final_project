@@ -15,10 +15,8 @@ const getExerciseById = async (req, res) => {
 
   //Transform _id string to number so we can use it to search for exercise _id
   const id = req.params.id;
-  // console.log(id);
   try {
     await client.connect();
-    console.log("You are connected!");
 
     const exerciseById = await db.collection("Exercise").findOne({ id: id });
 
@@ -35,12 +33,10 @@ const getExerciseById = async (req, res) => {
         .json({ status: 400, message: "Unable to retrieve Single Exercise" });
     }
     client.close();
-    console.log("Disconnected!");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: 500, message: error.message });
   }
 };
-// getExerciseById();
 
 module.exports = { getExerciseById };
