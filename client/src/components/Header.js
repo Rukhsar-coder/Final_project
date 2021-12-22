@@ -4,32 +4,29 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Images/Logo.png";
 import { useState } from "react";
-// import PatientHeader from "./HeaderContain/PatientHeader";
-// import PhysioHeader from "./HeaderContain/PhysioHeader";
-// import PersonIcon from "@material-ui/icons/Person";
-// import PatientHeader from "./HeaderContain/PatientHeader";
-// import PhysioHeader from "./HeaderContain/PhysioHeader";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  let signIn = window.sessionStorage.getItem("Sign-in");
-  // let signIn = window.sessionStorage.getItem(
-  //   "Sign-in",
-  //   JSON.stringify("signIn")
-  // );
-  console.log(signIn);
+  const history = useHistory();
+
+  // const [email, setEmail] = useState("");
+  // const [physiotherapist, setPhysiotherapist] = useState(false);
 
   const [userId, setUserId] = useState(() => {
     const user = sessionStorage.getItem("Sign-in");
     return user !== null ? JSON.parse(user) : null;
   });
-
   console.log(userId);
   console.log(userId.physiotherapist);
-  // {"email":"vezypijo@mailinator.com","physiotherapist":"true"}
-  // ? window.sessionStorage.getItem("Sign-in")
-  // : null;
 
-  // if (userId.physiotherapist === false) {
+  const handleLogout = () => {
+    sessionStorage.setItem("Sign-in");
+    setUserId(userId.email === "", userId.physiotherapist === false);
+    history.push("/");
+  };
+
+  // console.log(userId.physiotherapist);
+  // if ((userId?.email === "", userId?.physiotherapist === false)) {
   return (
     <>
       <Wrapper>
@@ -61,13 +58,11 @@ const Header = () => {
                 <LinkItem>
                   <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
                 </LinkItem>
-
                 <NavBtn>
                   <LinkItem>
-                    <SignUpButton to="/signup">SIGNUP</SignUpButton>
-                  </LinkItem>
-                  <LinkItem>
-                    <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
+                    <SignUpButton to="/PhysioSignIn" onClick={handleLogout}>
+                      LogOut
+                    </SignUpButton>
                   </LinkItem>
                 </NavBtn>
               </>
@@ -100,45 +95,6 @@ const Header = () => {
       </Wrapper>
     </>
   );
-  // } else {
-  //   return (
-  //     <>
-  //       <PatientHeader>
-  //         <Wrapper>
-  //           <LinksContainer>
-  //             <NavContainer>
-  //               <LogoStyledLink to="/">
-  //                 <BrandName src={Logo} alt="Logo"></BrandName>
-  //               </LogoStyledLink>
-  //               <LinkItem>
-  //                 <StyledLink to="/">HOME</StyledLink>
-  //               </LinkItem>
-  //               <LinkItem>
-  //                 <StyledLink to="/about">ABOUT </StyledLink>
-  //               </LinkItem>
-  //               <LinkItem>
-  //                 <StyledLink to="/workout ">WORKOUTS</StyledLink>
-  //               </LinkItem>
-  //               <LinkItem>
-  //                 <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-  //               </LinkItem>
-  //               <LinkItem>
-  //                 <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
-  //               </LinkItem>
-  //               <NavBtn>
-  //                 <LinkItem>
-  //                   <SignUpButton to="/signup">SIGNUP</SignUpButton>
-  //                 </LinkItem>
-  //                 <LinkItem>
-  //                   <SignUpButton to="/PhysioSignIn">MEMBER</SignUpButton>
-  //                 </LinkItem>
-  //               </NavBtn>
-  //             </NavContainer>
-  //           </LinksContainer>
-  //         </Wrapper>
-  //       </PatientHeader>
-  //     </>
-  //   );
 };
 // };
 
@@ -256,5 +212,5 @@ const SignUpButton = styled(NavLink)`
     transform: scale(1.15);
   }
 `;
-const PatientHeader = styled.div``;
+// const PatientHeader = styled.div``;
 export default Header;

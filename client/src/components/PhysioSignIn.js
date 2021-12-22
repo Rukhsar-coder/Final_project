@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 // import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { ExerciseContext } from "./ExerciseContext";
+import { Link } from "@material-ui/core";
 
 const PhysioSignIn = ({ _id }) => {
   const history = useHistory();
@@ -46,18 +47,10 @@ const PhysioSignIn = ({ _id }) => {
       .catch((err) => history.push("/errorpage"));
   };
 
-  // if (status === "loading") {
-  //   return <Spinner  size="10rem"/>;
-  // }
-
-  // const handleChange = (ev) => {
-  //   ev.preventDefault();
-  //   // const { name, value } = ev.target;
-
-  //   // setState({ [name]: value });
-  // };
+  // if (userId?.email === "") {
   return (
     <MainContainer>
+      {/* <Spinner size="10rem" /> */}
       <Wrapper>
         <Title>Physio Rehab</Title>
         <Form onSubmit={(e) => handleSignin(e)}>
@@ -106,13 +99,16 @@ const PhysioSignIn = ({ _id }) => {
             </Label>
           </RadioButton>
           <ConfirmSubmit>
-            <Submit type="submit">Log-In</Submit>
+            <Submit type="submit">Submit</Submit>
           </ConfirmSubmit>
         </Form>
       </Wrapper>
     </MainContainer>
   );
 };
+//   return <Div to="/PhysioSignIn"></Div>;
+// };
+// const Div = styled(Link)``;
 const RadioButton = styled.div`
   display: flex;
   flex-direction: column;
