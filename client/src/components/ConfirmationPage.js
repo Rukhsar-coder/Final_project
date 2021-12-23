@@ -9,17 +9,16 @@ import { format } from "date-fns";
 import Spinner from "./Spinner";
 
 const ConfirmationPage = () => {
-  let signIn = window.sessionStorage.getItem("Sign-in");
+  // let signIn = window.sessionStorage.getItem("Sign-in");
+
   const [userId, setUserId] = useState(() => {
     const user = sessionStorage.getItem("Sign-in");
     return user !== null ? JSON.parse(user) : null;
   });
   console.log(userId);
-  console.log(signIn);
 
   //
   const { email } = useParams();
-  console.log(useParams);
   console.log(email);
 
   const [allExercise, setAllExercise] = useState(null);
@@ -43,7 +42,7 @@ const ConfirmationPage = () => {
     <Div>
       {allExercise && (
         // {allExercise !== null && (
-        <MainWrapper to={`/confirmation/${email}`}>
+        <MainWrapper>
           {/* <Span>Exercise Summary:</Span>
           <FaCheckCircle size={40} /> */}
           <AssessmentReceived>
@@ -59,26 +58,26 @@ const ConfirmationPage = () => {
               <Paragraph>
                 <Span>Patient First Name: </Span>
                 <Value1>{allExercise.firstName}</Value1>
-                <Paragraph>
-                  <Span>Patient Last Name: </Span>
-                  <Value2>{allExercise.lastName}</Value2>
-                </Paragraph>
-                <Paragraph>
-                  <Span>Patient Email: </Span>
-                  <Value3>{allExercise.email}</Value3>
-                </Paragraph>
-                <Paragraph>
-                  <Span>physiotherapist Name: </Span>
-                  <Value4> {allExercise.physiotherapistName}</Value4>
-                </Paragraph>
-                <Paragraph>
-                  <Span>Note: </Span>
-                  <Value5> {allExercise.note}</Value5>
-                </Paragraph>
-                <Paragraph>
-                  <Span>URL: </Span>
-                  <Value6>{allExercise.url}</Value6>
-                </Paragraph>
+              </Paragraph>
+              <Paragraph>
+                <Span>Patient Last Name: </Span>
+                <Value2>{allExercise.lastName}</Value2>
+              </Paragraph>
+              <Paragraph>
+                <Span>Patient Email: </Span>
+                <Value3>{allExercise.email}</Value3>
+              </Paragraph>
+              <Paragraph>
+                <Span>physiotherapist Name: </Span>
+                <Value4> {allExercise.physiotherapistName}</Value4>
+              </Paragraph>
+              <Paragraph>
+                <Span>Note: </Span>
+                <Value5> {allExercise.note}</Value5>
+              </Paragraph>
+              <Paragraph>
+                <Span>URL: </Span>
+                <Value6>{allExercise.url}</Value6>
               </Paragraph>
             </ExerciseNumber>
           </ConfirmationContainer>
@@ -116,21 +115,23 @@ const ConfirmationPage = () => {
           })}
         </MainWrapper>
       )}
-      {/* {allExercise === null && (
+      {allExercise === null && (
         <Constainer>
           {" "}
           You have not recived any assesment form Your Physio yet.
         </Constainer>
-      )}  */}
+      )}
     </Div>
   );
 };
 const Span1 = styled.span`
   font-weight: 600;
+  text-align: left;
 `;
 const AllExercise = styled(Link)`
   display: flex;
   flex-direction: column;
+  display: grid
   width: 450px;
   height: 400px;
   padding: 50px;
@@ -143,8 +144,6 @@ const AllExercise = styled(Link)`
   margin-bottom: 30px;
   border-style: solid;
   border-width: 5px;
-  display: flex;
-  flex-direction: row;
   &:hover div {
     box-shadow: 0 0 5px #def5f5;
     background-color: #def5f5;
@@ -172,7 +171,7 @@ const ImgContainer = styled.span`
   vertical-align: middle;
 `;
 const DataContainer = styled.div``;
-// const Constainer = styled.div``;
+const Constainer = styled.div``;
 const ExerciseName = styled.div``;
 const Value1 = styled.span`
   margin-left: 48px;
@@ -203,8 +202,10 @@ const Div = styled.div`
   width: auto;
   top: 80px;
   margin-left: 80px;
+
+  display: flex;
 `;
-const MainWrapper = styled(Link)`
+const MainWrapper = styled.div`
   height: 700px;
   color: #111111;
   // display: flex;

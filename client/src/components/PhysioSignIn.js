@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-
+import SignUpImg from "./Images/SignUpImg.jpg";
 import { useContext, useState } from "react";
 // import Spinner from "./Spinner";
 // import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { ExerciseContext } from "./ExerciseContext";
 import { Link } from "@material-ui/core";
+import { UserContext } from "./UserContext";
 
-const PhysioSignIn = ({ _id }) => {
+const PhysioSignIn = () => {
   const history = useHistory();
-
+  const { setUserId } = useContext(UserContext);
   // consume context
   const { setPhysio } = useContext(ExerciseContext);
   // const [status, setStatus] = useState("loading");
@@ -41,8 +42,9 @@ const PhysioSignIn = ({ _id }) => {
           "Sign-in",
           JSON.stringify({ email, physiotherapist })
         );
+        const user = { email, physiotherapist };
+        setUserId(user);
         setPhysio(data.data);
-        console.log(data);
         // setStatus("idle");
         history.push("/");
       })
@@ -111,6 +113,7 @@ const PhysioSignIn = ({ _id }) => {
               />
             </Label>
           </RadioButton>
+          {/* <Image11 src={About} alt="Logo"></Image11> */}
           <ConfirmSubmit>
             <Submit type="submit">Submit</Submit>
           </ConfirmSubmit>
@@ -120,15 +123,31 @@ const PhysioSignIn = ({ _id }) => {
   );
 };
 //   return <Div to="/PhysioSignIn"></Div>;
-// };
-// const Div = styled(Link)``;
+// // };
+// const Image11 = styled.img`
+//   display: flex;
+//   position: absolute;
+//   height: 450px;
+//   margin-left: -530px;
+// `;
 const RadioButton = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
 `;
 const ConfirmSubmit = styled.div``;
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  ont-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  top: 85px;
+  // position: absolute;
+  background-size: cover;
+  background-image: url(${SignUpImg});
+`;
 const Input = styled.input`
   margin-left: 10px;
   width: 190px;
@@ -146,6 +165,7 @@ const Label = styled.label`
 `;
 
 const Title = styled.h1`
+  margin-top: -130px;
   text-align: center;
   padding: 20px 0px;
   font-family: var(--font-family);
@@ -161,7 +181,7 @@ const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   align-items: flex-end;
-  margin-right: 800px;
+  margin-right: 100px;
 `;
 
 const Wrapper = styled.div`

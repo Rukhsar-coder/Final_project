@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 // import { Link } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Images/Logo.png";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { UserContext } from "./UserContext";
 
 const Header = () => {
   const history = useHistory();
-
+  const { userId, setUserId } = useContext(UserContext);
   // const [email, setEmail] = useState("");
   // const [physiotherapist, setPhysiotherapist] = useState(false);
 
-  const [userId, setUserId] = useState(() => {
-    const user = sessionStorage.getItem("Sign-in");
-    console.log(typeof user);
-    return user !== null ? JSON.parse(user) : null;
-  });
   console.log(userId);
   // console.log(userId.physiotherapist);
 
@@ -27,6 +23,11 @@ const Header = () => {
     console.log(userId);
   };
 
+  useEffect(() => {
+    const user = sessionStorage.getItem("Sign-in");
+    console.log(typeof user);
+    setUserId(user !== null ? JSON.parse(user) : null);
+  }, []); //eslint-disable-line
   // console.log(userId.physiotherapist);
   // if ((userId?.email === "", userId?.physiotherapist === false)) {
   return (
@@ -55,7 +56,9 @@ const Header = () => {
                   <StyledLink to="/Patients-List">PATIENTS</StyledLink>
                 </LinkItem>
                 <LinkItem>
-                  <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+                  <StyledLink to={`/confirmation/${userId.email}`}>
+                    CONFIRMATION
+                  </StyledLink>
                 </LinkItem>
                 <LinkItem>
                   <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
@@ -83,7 +86,9 @@ const Header = () => {
                   <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
                 </LinkItem>
                 <LinkItem>
-                  <StyledLink to="/confirmation">CONFIRMATION</StyledLink>
+                  <StyledLink to={`/confirmation/${userId.email}`}>
+                    CONFIRMATION
+                  </StyledLink>
                 </LinkItem>
                 <NavBtn>
                   <LinkItem>
@@ -164,9 +169,9 @@ const NavBtn = styled.nav`
   text-decoration: none;
   margin-right: 24px;
   /* Third Nav */
-  /* justify-content: flex-end;
-  width: 100vw; */
-  @media screen and (max-width: 768px) {
+  // justify-content: flex-end;
+  width: 100vw;
+  */ @media screen and (max-width: 768px) {
     display: none;
   }
 `;

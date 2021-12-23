@@ -50,7 +50,7 @@ const Div = styled.div`
   width: auto;
   height: 100vh;
   background-image: url(${homePage});
-  // background-repeat: no-repeat;
+  background-repeat: no-repeat;
 `;
 const SignupLink = styled(Link)``;
 
