@@ -157,12 +157,7 @@ const BrandName = styled.img`
     transform: scale(1.05);
   }
 `;
-// const SubLinkItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   font-style: italic;
-//   justify-content: center;
-// `;
+
 const NavBtn = styled.nav`
   display: flex;
   align-items: center;
@@ -182,9 +177,6 @@ const NavContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: -24px;
-  // @media screen and (max-width: 768px) {
-  //   display: none;
-  // }
 `;
 const LinkItem = styled.div`
   color: #85c1e9;
@@ -226,12 +218,7 @@ const SignUpButton = styled(NavLink)`
   outline: none;
   border: none;
   cursor: pointer;
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
+  background: #efefef;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   /* Second Nav */

@@ -111,7 +111,7 @@ const Para2 = styled.span`
 
   padding: 10px;
   border-radius: 25px;
-  margin-left: 330px;
+  margin-left: 450px;
   font-weight: 900;
   &:hover {
     cursor: pointer;
@@ -128,7 +128,7 @@ const Para3 = styled.span`
 
   padding: 10px;
   border-radius: 25px;
-  margin-left: 310px;
+  margin-left: 430px;
   font-size: 25px;
   color: white;
   font-weight: 900;
@@ -145,7 +145,7 @@ const Para4 = styled.span`
   top: 400px;
   position: absolute;
   display: row;
-  margin-left: 310px;
+  margin-left: 410px;
   font-size: 25px;
   color: white;
   font-weight: 900;
@@ -165,7 +165,7 @@ const BookButton = styled(Link)`
   display: row;
   border-radius: 25px;
   border: none;
-  margin-left: 390px;
+  margin-left: 410px;
   font-size: 25px;
   color: white;
   font-weight: 900;

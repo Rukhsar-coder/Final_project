@@ -44,8 +44,14 @@ const ListOfPatients = () => {
   };
   return (
     <Div>
+      <ListOfName>List Of Patients</ListOfName>
       {listOfPatients && (
         <Wrapper>
+          <TableHeading>
+            <Value1> First Name</Value1>
+            <Value2> Last Name</Value2>
+            <Value3> Email</Value3>
+          </TableHeading>
           {listOfPatients.slice(start, stop).map((patient) => {
             // console.log(patient);
             return (
@@ -56,14 +62,13 @@ const ListOfPatients = () => {
               >
                 <DataContainer>
                   <PatientName>
-                    <Value>Patient FirstName:</Value> {patient.firstName}
+                    <Input>{patient.firstName}</Input>
                   </PatientName>
-                  <PatientName>
-                    <Value>Patient LastName:</Value> {patient.lastName}
-                  </PatientName>
+                  <PatientName1>
+                    <Input>{patient.lastName}</Input>
+                  </PatientName1>
                   <PatientEmail>
-                    <Value>Patient Email:</Value>
-                    {patient.email}
+                    <Input>{patient.email}</Input>
                   </PatientEmail>
                 </DataContainer>
               </AllPatient>
@@ -85,6 +90,88 @@ const ListOfPatients = () => {
     </Div>
   );
 };
+const ListOfName = styled.h1`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+`;
+
+const Input = styled.tr``;
+const TableHeading = styled.th`
+  padding-top: 10px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+  width: 2100px;
+`;
+const Value1 = styled.span`
+  border: 1px solid #04aa6d;
+  padding-left: 80px;
+  font-size: 25px;
+  flex-direction: row
+  justify-content: space-between;
+`;
+const Value2 = styled.span`
+  border: 1px solid #04aa6d;
+  padding-left: 250px;
+  font-size: 25px;
+  flex-direction: row
+  justify-content: space-between;
+`;
+const Value3 = styled.span`
+  border: 1px solid #04aa6d;
+  padding-left: 320px;
+  font-size: 25px;
+  flex-direction: row
+  justify-content: space-between;
+`;
+const Div = styled.div`
+  padding-top: 20px;
+  font-family: "roboto", sans-serif;
+`;
+const Wrapper = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  flex-direction: row;
+`;
+const AllPatient = styled(Link)`
+  flex-direction: row;
+`;
+const DataContainer = styled.div`
+  padding-top: 10px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+
+  align-items: flex-end;
+  text-decoration: none;
+`;
+const PatientEmail = styled.div`
+  padding-left: 240px;
+  font-size: 25px;
+  flex-direction: row
+  color: #ff6347;
+    width: 310px;
+`;
+const PatientName = styled.div`
+  padding-left: 60px;
+  font-size: 25px;
+  flex-direction: row;
+  width: 310px;
+`;
+
+const PatientName1 = styled.div`
+  padding-left: 160px;
+  font-size: 25px;
+  flex-direction: row;
+  width: 310px;
+`;
+export default ListOfPatients;
+
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -93,13 +180,7 @@ const ButtonContainer = styled.div`
   outline: none;
   background: white;
   font-size: 90px;
-`;
-const Value = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-  padding: 20px 0px;
-
-  font-family: "roboto", sans-serif;
+  padding-top: 40px;
 `;
 const PageNumber = styled.span`
   padding: 20px;
@@ -107,42 +188,3 @@ const PageNumber = styled.span`
   front-weight: 1200;
 `;
 const PageButton = styled.button``;
-const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-family: "roboto", sans-serif;
-`;
-const Wrapper = styled.div`
-  justify-content: center;
-  margin-top: 30px;
-  position: relative;
-`;
-const AllPatient = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  font-size: 20px;
-  font-weight: 400;
-  position: relative;
-  border-radius: 20px;
-  text-decoration: none;
-  color: black;
-  margin-bottom: 30px;
-  &:hover div {
-    box-shadow: 0 0 5px #def5f5;
-    background-color: #def5f5;
-  }
-`;
-const DataContainer = styled.div``;
-const PatientEmail = styled.div`
-  font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
-`;
-
-const PatientName = styled.div`
-  font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
-`;
-export default ListOfPatients;

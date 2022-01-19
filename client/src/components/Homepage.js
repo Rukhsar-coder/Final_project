@@ -51,6 +51,8 @@ const Div = styled.div`
   height: 100vh;
   background-image: url(${homePage});
   background-repeat: no-repeat;
+  background-size: cover;
+  // opacity: 0.3;
 `;
 const SignupLink = styled(Link)``;
 
@@ -78,14 +80,15 @@ const Para1 = styled.span`
   font-size: 45px;
   background: A9A9A9;
   font-weight: 600;
-  color: white;
+  color: #000000;
+  opacity: 0.9;
 `;
 const Para2 = styled.span`
   top: 180px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
+  color: #000000;
 
   line-height: 30px;
 `;
@@ -95,8 +98,6 @@ const Para22 = styled.span`
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
-
   line-height: 30px;
 `;
 const Para3 = styled.span`
@@ -105,8 +106,6 @@ const Para3 = styled.span`
   position: absolute;
   padding: 70px;
   font-size: 25px;
-  color: white;
-
   line-height: 30px;
 `;
 const Para4 = styled.span`
@@ -114,29 +113,24 @@ const Para4 = styled.span`
   position: absolute;
   padding: 70px;
   font-size: 25px;
-  color: white;
 `;
 const Para5 = styled.span`
   top: 400px;
   position: absolute;
   padding: 70px;
   font-size: 25px;
-
-  color: white;
 `;
 const Para6 = styled.span`
   top: 450px;
   position: absolute;
   padding: 70px;
   font-size: 25px;
-  color: white;
 `;
 const Para7 = styled.span`
   top: 520px;
   position: absolute;
   padding: 80px;
   font-size: 30px;
-  color: white;
   font-weight: 600;
 `;
 const ButtonSignup = styled.button`
@@ -152,14 +146,8 @@ const ButtonSignup = styled.button`
     cursor: pointer;
     box-shadow: 0 0 10px #f4f4f4;
     transition: 300ms ease-in;
-    transform: scale(1.05);
-    // background: #94bbe9;
-    background: rgb(63, 94, 251);
-    background: radial-gradient(
-      circle,
-      rgba(63, 94, 251, 1) 0%,
-      rgba(70, 252, 216, 1) 100%
-    );
+    transform: scale(1.25);
+    background: #efefef;
   }
 `;
 // const Para9 = styled.span``;

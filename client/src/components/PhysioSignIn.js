@@ -70,11 +70,11 @@ const PhysioSignIn = () => {
             ></Input>
           </Label>
           <Label>
-            Password Name:
+            Password:
             <Input
               type="password"
               id="password"
-              placeholder="passworde"
+              placeholder="Password"
               // value={password}
               // onChange={(e) => setpassword(e.target.value)}
               required
@@ -82,7 +82,7 @@ const PhysioSignIn = () => {
           </Label>
           <RadioButton>
             <Label>Select Type</Label>
-            <Label htmlFor="type">
+            <Label001 htmlFor="type">
               Patient
               <Input
                 type="radio"
@@ -95,8 +95,8 @@ const PhysioSignIn = () => {
                   }
                 }}
               />
-            </Label>
-            <Label htmlFor="type">
+            </Label001>
+            <Label002 htmlFor="type">
               Physiotherapist
               <Input
                 type="radio"
@@ -111,7 +111,7 @@ const PhysioSignIn = () => {
 
                 // required
               />
-            </Label>
+            </Label002>
           </RadioButton>
           {/* <Image11 src={About} alt="Logo"></Image11> */}
           <ConfirmSubmit>
@@ -142,11 +142,7 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  top: 85px;
-  // position: absolute;
-  background-size: cover;
-  background-image: url(${SignUpImg});
+  height: 70vh;
 `;
 const Input = styled.input`
   margin-left: 10px;
@@ -162,10 +158,25 @@ const Label = styled.label`
   font-family: var(--font-family);
   padding: 10px;
   font-weight: bold;
+  font-size: 22px;
+`;
+const Label001 = styled.label`
+  font-family: var(--font-family);
+  padding: 10px;
+  font-weight: bold;
+  font-size: 22px;
+
+  margin-right: -75px;
+`;
+const Label002 = styled.label`
+  font-family: var(--font-family);
+  padding: 10px;
+  font-weight: bold;
+  font-size: 22px;
 `;
 
 const Title = styled.h1`
-  margin-top: -130px;
+  margin-top: 20px;
   text-align: center;
   padding: 20px 0px;
   font-family: var(--font-family);
@@ -187,15 +198,20 @@ const Form = styled.form`
 const Wrapper = styled.div`
   min-height: 55vh;
   background-size: cover;
+  border: 1px;
+  padding: 80px;
+  box-shadow: 5px 10px 8px #888888;
+  margin-right: 100px;
+  margin-top: -20px;
 `;
 
 const Submit = styled.button`
   height: 50px;
   width: 200px;
   margin: 10px;
-  margin-right: 95px;
+  margin-right: 55px;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: bold;
   border: none;
   color: white;

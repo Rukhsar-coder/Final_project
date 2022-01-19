@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import About from "./Images/About.jpeg";
+import About1 from "../components/Images/About1.jpg";
 
 // import Footer from "./Footer";
 
@@ -78,11 +78,11 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 55vh;
+  height: 100vh;
   top: 85px;
   // position: absolute;
   background-size: cover;
-  background-image: url(${About});
+  background-image: url(${About1});
 `;
 
 const Wrapper = styled.div`
@@ -105,71 +105,74 @@ const Parag1 = styled.span`
   position: absolute;
   padding: 80px;
   font-size: 45px;
-  color: white;
+  color: #303030;
   font-weight: 900;
   margin-left: -450px;
 `;
 
 const Para2 = styled.span`
-  top: 235px;
+  top: 180px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
+  color: #303030;
   margin-left: -1050px;
 `;
 const Para3 = styled.span`
-  top: 270px;
+  top: 220px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
+  color: #303030;
   margin-left: -1050px;
 `;
 const Para4 = styled.span`
-  top: 310px;
+  top: 260px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
+  color: #303030;
 
   margin-left: -1050px;
 `;
 const Para5 = styled.span`
-  top: 350px;
+  top: 300px;
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
+  color: #303030;
   margin-left: -1050px;
 `;
 const Para6 = styled.span`
-  top: 530px;
+  top: 480px;
   font-weight: 600;
   margin-left: -850px;
   font-size: 33px;
   position: absolute;
-  color: white;
+  color: #303030;
 `;
 const Para7 = styled.span`
-  top: 640px;
-  margin-left: -990px;
-  font-size: 20px;
+  top: 540px;
+  margin-left: -975px;
+  margin-right: 100px;
+  font-size: 22px;
   position: absolute;
-  // color: #9966ff;
+  color: #303030;
 `;
 const Para8 = styled.span`
-  top: 780px;
-  margin-left: -990px;
-  font-size: 20px;
+  top: 680px;
+  margin-left: -975px;
+  margin-right: 100px;
+  font-size: 22px;
   position: absolute;
-  // color: #9966ff;
+  color: #303030;
 `;
 const Para9 = styled.span`
-  top: 840px;
-  margin-left: -990px;
-  font-size: 20px;
+  top: 740px;
+  margin-left: -975px;
+  margin-right: 100px;
+  font-size: 22px;
   position: absolute;
-  // color: #9966ff;
+  color: #303030;
 `;
 export default AboutUS;

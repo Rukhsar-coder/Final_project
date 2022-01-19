@@ -144,7 +144,7 @@ const PatientForm = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Last Name"
+              placeholder="Patient email"
               required
             ></Input>
           </Label>
