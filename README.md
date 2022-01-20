@@ -1,4 +1,8 @@
-# Final_project
+# Physio Rehab Web Application
+
+# Description :
+
+Tool that can help people be more active and involved in their own rehabilitation. An increase in patient compliance can be achieved by making exercise programs easier to adhere to. Clear descriptions of exercises are also critical to the success of any exercise program. Here is a list of 1300+ exercises in this web application that allow physical therapists to create specific exercise programs for their patients.
 
 # Getting Started with Create React App
 
