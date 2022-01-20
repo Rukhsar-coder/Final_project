@@ -60,9 +60,9 @@ const Header = () => {
                     CONFIRMATION
                   </StyledLink>
                 </LinkItem>
-                <LinkItem>
+                {/* <LinkItem>
                   <StyledLink to="/Appointment">APPOINTMENT</StyledLink>
-                </LinkItem>
+                </LinkItem> */}
                 <NavBtn>
                   <LinkItem>
                     <SignUpButton to="/" onClick={handleLogout}>
@@ -87,7 +87,7 @@ const Header = () => {
                 </LinkItem>
                 <LinkItem>
                   <StyledLink to={`/confirmation/${userId.email}`}>
-                    CONFIRMATION
+                    ASSESSMENT
                   </StyledLink>
                 </LinkItem>
                 <NavBtn>

@@ -4,7 +4,7 @@ import Image1 from "./Images/Image1.png";
 import Call from "./Images/Call.png";
 import Email from "./Images/Email.png";
 import Online from "./Images/Online.png";
-import SignUpImg from "./Images/SignUpImg.jpg";
+import get from "./Images/get.jpg";
 import { Link } from "react-router-dom";
 const BookAppointment = () => {
   return (
@@ -17,7 +17,7 @@ const BookAppointment = () => {
         ></BackgroundImg1>
 
         <BackgroundImg
-          src={SignUpImg}
+          src={get}
           alt="SignUpImg Background Image"
         ></BackgroundImg>
         <Para2></Para2>
@@ -37,14 +37,13 @@ const BookAppointment = () => {
 const Div = styled.div`
   display: flex;
   font-family: "Roboto", "Poppins", Helvetica, Arial, sans-serif;
-
   justify-content: center;
   align-items: center;
   position: absolute;
 `;
 const Wrapper = styled.div``;
 const BackgroundImg = styled.img`
-    width: 10vh
+    width: 1000px
     height: 10px;
     display: flex;
     
@@ -63,7 +62,7 @@ const Para1 = styled.span`
   padding: 80px;
   margin-left: 620px;
   font-size: 35px;
-  color: white;
+  // color: white;
   font-weight: 900;
   
   display: flex,
@@ -107,8 +106,7 @@ const Para2 = styled.span`
   position: absolute;
   padding: 80px;
   font-size: 25px;
-  color: white;
-
+  // color: white;
   padding: 10px;
   border-radius: 25px;
   margin-left: 450px;
@@ -125,12 +123,11 @@ const Para3 = styled.span`
   top: 230px;
   position: absolute;
   display: row;
-
   padding: 10px;
   border-radius: 25px;
   margin-left: 430px;
   font-size: 25px;
-  color: white;
+  // color: white;
   font-weight: 900;
   //   justify-content: center;
   &:hover {
@@ -147,7 +144,7 @@ const Para4 = styled.span`
   display: row;
   margin-left: 410px;
   font-size: 25px;
-  color: white;
+  // color: white;
   font-weight: 900;
   padding: 20px;
   border-radius: 25px;
@@ -167,7 +164,7 @@ const BookButton = styled(Link)`
   border: none;
   margin-left: 410px;
   font-size: 25px;
-  color: white;
+  // color: white;
   font-weight: 900;
   padding: 25px;
   &:hover {

@@ -68,7 +68,7 @@ const ConfirmationPage = () => {
                 <Value3>{allExercise.email}</Value3>
               </Paragraph>
               <Paragraph>
-                <Span>physiotherapist Name: </Span>
+                <Span>Physiotherapist Name: </Span>
                 <Value4> {allExercise.physiotherapistName}</Value4>
               </Paragraph>
               <Paragraph>
