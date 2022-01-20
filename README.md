@@ -8,19 +8,6 @@ Tool that can help people be more active and involved in their own rehabilitatio
 
 ![image](https://user-images.githubusercontent.com/77547142/150414878-ca480818-76ec-452c-a2a8-9a5ed8bf56d0.png)
 
-# About Page:
-
-![image](https://user-images.githubusercontent.com/77547142/150415241-a280eba2-6ba3-4443-a118-0bf9a3a61aa1.png)
-
-# Workout Page:
-
-![image](https://user-images.githubusercontent.com/77547142/150415361-096e2b2b-ba0d-4deb-a213-f1eb123f4ace.png)
-
-# Appointment Page:
-
-![image](https://user-images.githubusercontent.com/77547142/150415467-6c483534-1b79-4b20-a5bf-8ece2b72a006.png)
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
